@@ -1,0 +1,52 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+html, body {
+  font-size: 62.5%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #f0f8ffd0;
+}
+
+header {
+  height: 10rem;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+header h1 {
+  font-size: 3rem;
+  font-family: cursive, monospace;
+}
+
+main {
+  height: 47.5rem;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+main .gameBoard {
+  border: solid;
+  height: 80%;
+  width: 30%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  -ms-grid-rows: (1fr)[3];
+      grid-template-rows: repeat(3, 1fr);
+}
+
+main .gameBoard .gameBox {
+  cursor: pointer;
+  border: solid;
+}
+/*# sourceMappingURL=main.css.map */

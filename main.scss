@@ -1,0 +1,44 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html, body {
+    font-size: 62.5%;
+    box-sizing: border-box;
+    background: #f0f8ffd0;
+}
+
+header {
+    height: 10rem;
+    display: grid;
+    place-items: center;
+
+    h1 {
+        font-size: 3rem;
+        font-family: cursive, monospace;
+    }
+}
+
+main {
+    height: 47.5rem;
+    display: grid;
+    place-items: center;
+
+    .gameBoard {
+        border: solid;
+        height: 80%;
+        width: 30%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+
+        .gameBox {
+            cursor: pointer;
+            border: solid;
+        }
+    }
+}
