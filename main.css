@@ -52,6 +52,10 @@ main .gameBoard .gameBox {
   place-items: center;
 }
 
+main .gameBoard .gameBox .elstyle {
+  font-size: 3rem;
+}
+
 main .gameBoard #one {
   border-left: none;
   border-top: none;

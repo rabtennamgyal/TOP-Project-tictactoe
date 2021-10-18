@@ -40,6 +40,10 @@ main {
             border: solid;
             display: grid;
             place-items: center;
+
+            .elstyle {
+                font-size: 3rem;
+            }
         }
 
         #one {
