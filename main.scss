@@ -29,7 +29,6 @@ main {
     place-items: center;
 
     .gameBoard {
-        border: solid;
         height: 80%;
         width: 30%;
         display: grid;
@@ -39,6 +38,44 @@ main {
         .gameBox {
             cursor: pointer;
             border: solid;
+            display: grid;
+            place-items: center;
+        }
+
+        #one {
+            border-left: none;
+            border-top: none;
+        }
+
+        #two {
+            border-top: none;
+        }
+
+        #three {
+            border-top: none;
+            border-right: none;
+        }
+
+        #four {
+            border-left: none;
+        }
+
+        #six {
+            border-right: none;
+        }
+
+        #seven {
+            border-left: none;
+            border-bottom: none;
+        }
+
+        #eight {
+            border-bottom: none;
+        }
+
+        #nine {
+            border-right: none;
+            border-bottom: none;
         }
     }
 }

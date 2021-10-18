@@ -1,13 +1,9 @@
-function Player(name, symbol) {
-    return {name, symbol}
+function Player(name) {
+    return {name}
 }
 
-
-const GameBoard = (() => {
+const gameBoard = (() => {
     const board = []
 
-    const playerOne = Player('Player One')
-    const playerTwo = Player('Player Two')
-
-
+    
 })()
