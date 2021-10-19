@@ -17,7 +17,15 @@ const gameBoard = (() => {
         board.splice(index, count, el)
     }
 
-    return {getBoard, fillBoard}
+    const resetBoard = () => {
+        board = [
+            '', '', '',
+            '', '', '',
+            '', '', ''
+        ]
+    }
+
+    return {getBoard, fillBoard, resetBoard}
 })()
 
 let x = true // This is the only global variable. It dictates Xs and Os.
@@ -108,42 +116,13 @@ const playGame = (() => {
     }, 1000)
 })()
 
+// Restart Game
+const restartGame = (() => {
+    const restartBtn = document.getElementById('restart')
 
+    const restart = () => {
+        gameBoard.resetBoard()
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    restartBtn.addEventListener('click', restart)
+})()
