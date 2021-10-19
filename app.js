@@ -1,16 +1,14 @@
-
-// Factory Function to create new players.
 function Player(name, symbol) {
     return {name, symbol}
 }
 
-// Module holding the board.
 const gameBoard = (() => {
     const board = [
-        '❤', '❣', '💕',
+        '', '', '',
         '', '', '',
         '', '', ''
     ]
+
     const getBoard = () => {
         return board
     }
@@ -22,27 +20,92 @@ const gameBoard = (() => {
     return {getBoard, fillBoard}
 })()
 
+let x = true // This is the only global variable. It dictates Xs and Os.
 
-// Object to control the flow of the game
 const gameFlow = (() => {
-    //  JavaScript function that will render the contents of the gameboard array to the webpage
     const board = gameBoard.getBoard()
     const box = document.querySelectorAll('.gameBox')
 
-    const renderXO = (e) => {
+    const renderX = (e) => {
         for (let i = 0; i < board.length; i++) {
             const target = e.target
             const data = target.getAttribute('data-index')
             const el = document.createElement('p')
             el.classList.add('elstyle')
-            if (i === Number(data) && board[i] !== '') {
-                el.textContent = `${board[i]}`
-                target.appendChild(el)
-            } 
+            if (board[i] === '') {
+                if (i === Number(data)) {
+                    gameBoard.fillBoard(i, 1, '❌')
+                    el.textContent = `${board[i]}`
+                    target.appendChild(el)
+                    x = false
+                } 
+            }
         }
     }
 
-    box.forEach(el => el.addEventListener('click', renderXO))
+    const renderO = (e) => {
+        for (let i = 0; i < board.length; i++) {
+            const target = e.target
+            const data = target.getAttribute('data-index')
+            const el = document.createElement('p')
+            el.classList.add('elstyle')
+            if (board[i] === '') {
+                if (i === Number(data)) {
+                    gameBoard.fillBoard(i, 1, '⭕')
+                    el.textContent = `${board[i]}`
+                    target.appendChild(el)
+                    x = true
+                } 
+            }
+        }
+    }
+
+    box.forEach(el => el.addEventListener('click', ((e) => {
+        if (x) {
+            renderX(e)
+        } else {
+            renderO(e)
+        }
+    })))
+})()
+
+
+const playGame = (() => {
+    const board = gameBoard.getBoard()
+
+    const checkBoard = () => {
+        let check = []
+        board.forEach(el => el !== '' ? check.push(true) : check.push(false))
+        let trueArr = check.filter(el => el === true)
+        let x = board.filter(el => el === '❌')
+        let o = board.filter(el => el === '⭕')
+
+        if (trueArr.length >= 3) {
+            if (board[0] !== '' && board[0] === board[1] && board[1] === board[2]) {
+                console.log('win')
+            } else if (board[0] !== '' && board[0] === board[3] && board[3] === board[6]) {
+                console.log('win')
+            } else if (board[0] !== '' && board[0] === board[4] && board[4] === board[8]) {
+                console.log('win')
+            } else if (board[1] !== '' && board[1] === board[4] && board[4] === board[7]) {
+                console.log('win')
+            } else if (board[2] !== '' && board[2] === board[5] && board[5] === board[8]) {
+                console.log('win')
+            } else if (board[2] !== '' && board[2] === board[4] && board[4] === board[6]) {
+                console.log('win')
+            } else if (board[3] !== '' && board[3] === board[4] && board[4] === board[5]) {
+                console.log('win')
+            } else if (board[6] !== '' && board[6] === board[7] && board[7] === board[8]) {
+                console.log('win')
+            } else if (x.length === 5 &&  o.length === 4) {
+                console.log('draw')
+            }
+        } 
+    }
+
+    setInterval(() => {
+        checkBoard()
+    }, 1000)
 })()
 
 
@@ -84,17 +147,3 @@ const gameFlow = (() => {
 
 
 
-
-
-
-
-
-const one = document.getElementById('one')
-const two = document.getElementById('two')
-const three = document.getElementById('three')
-const four = document.getElementById('four')
-const five = document.getElementById('five')
-const six = document.getElementById('six')
-const seven = document.getElementById('seven')
-const eight = document.getElementById('eight')
-const nine = document.getElementById('nine')

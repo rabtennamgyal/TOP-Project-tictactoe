@@ -53,7 +53,7 @@ main .gameBoard .gameBox {
 }
 
 main .gameBoard .gameBox .elstyle {
-  font-size: 3rem;
+  font-size: 3.5rem;
 }
 
 main .gameBoard #one {
