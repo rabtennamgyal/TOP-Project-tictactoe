@@ -24,6 +24,7 @@ const gameBoard = (() => {
     return {getBoard, fillBoard, resetBoard}
 })()
 
+
 let x = true // This is the only global variable. It dictates Xs and Os.
 
 const gameFlow = (() => {
@@ -76,32 +77,32 @@ const gameFlow = (() => {
 const getName = (() => {
     const btnOne = document.querySelector('.playerOneName')
     const btnTwo = document.querySelector('.playerTwoName')
-    const one = document.querySelector('.inputOne').value
-    const two = document.querySelector('.inputTwo').value
-
-    let p1name, p2name;
+    const one = document.querySelector('.inputOne')
+    const two = document.querySelector('.inputTwo')
+    let p1name, p2name
 
     const s1 = () => {
-        p1name = one
+        if (one.value) {
+            p1name = one.value
+            one.value = ''
+            console.log(p1name)
+        }
     }
 
     const s2 = () => {
-        p2name = two
+        if (two.value) {
+            p2name = two.value
+            two.value = ''
+            console.log(p2name)
+        }
     }
 
     btnOne.addEventListener('click', s1)
     btnTwo.addEventListener('click', s2)
-
-    return {p1name, p2name}
 })()
 
 const playGame = (() => {
     const board = gameBoard.getBoard()
-    const p1 = getName.p1name
-    const p2 = getName.p2name
-
-    const playerOne = Player(p1)
-    const playerTwo = Player(p2)
 
     const checkBoard = () => {
         let check = []
@@ -112,11 +113,7 @@ const playGame = (() => {
 
         if (trueArr.length >= 3) {
             if (board[0] !== '' && board[0] === board[1] && board[1] === board[2]) {
-                if (board[0] === '❌') {
-                    console.log(`${playerOne.name} wins.`)
-                } else {
-                    console.log(`${playerTwo.name} wins.`)
-                }
+                console.log('win')
             } else if (board[0] !== '' && board[0] === board[3] && board[3] === board[6]) {
                 console.log('win')
             } else if (board[0] !== '' && board[0] === board[4] && board[4] === board[8]) {
