@@ -1,5 +1,5 @@
-function Player(name, symbol) {
-    return {name, symbol}
+function Player(name) {
+    return {name}
 }
 
 const gameBoard = (() => {
@@ -18,11 +18,7 @@ const gameBoard = (() => {
     }
 
     const resetBoard = () => {
-        board = [
-            '', '', '',
-            '', '', '',
-            '', '', ''
-        ]
+        console.log('Board resetted')
     }
 
     return {getBoard, fillBoard, resetBoard}
@@ -77,9 +73,35 @@ const gameFlow = (() => {
     })))
 })()
 
+const getName = (() => {
+    const btnOne = document.querySelector('.playerOneName')
+    const btnTwo = document.querySelector('.playerTwoName')
+    const one = document.querySelector('.inputOne').value
+    const two = document.querySelector('.inputTwo').value
+
+    let p1name, p2name;
+
+    const s1 = () => {
+        p1name = one
+    }
+
+    const s2 = () => {
+        p2name = two
+    }
+
+    btnOne.addEventListener('click', s1)
+    btnTwo.addEventListener('click', s2)
+
+    return {p1name, p2name}
+})()
 
 const playGame = (() => {
     const board = gameBoard.getBoard()
+    const p1 = getName.p1name
+    const p2 = getName.p2name
+
+    const playerOne = Player(p1)
+    const playerTwo = Player(p2)
 
     const checkBoard = () => {
         let check = []
@@ -90,7 +112,11 @@ const playGame = (() => {
 
         if (trueArr.length >= 3) {
             if (board[0] !== '' && board[0] === board[1] && board[1] === board[2]) {
-                console.log('win')
+                if (board[0] === '❌') {
+                    console.log(`${playerOne.name} wins.`)
+                } else {
+                    console.log(`${playerTwo.name} wins.`)
+                }
             } else if (board[0] !== '' && board[0] === board[3] && board[3] === board[6]) {
                 console.log('win')
             } else if (board[0] !== '' && board[0] === board[4] && board[4] === board[8]) {
@@ -116,13 +142,26 @@ const playGame = (() => {
     }, 1000)
 })()
 
-// Restart Game
-const restartGame = (() => {
-    const restartBtn = document.getElementById('restart')
+// start Game
+const startGame = (() => {
+    const playGame = document.getElementById('playGame')
+    const modal = document.getElementById('modal')
 
-    const restart = () => {
-        gameBoard.resetBoard()
+    const clearModal = () => {
+        modal.style.display = 'none'
     }
 
-    restartBtn.addEventListener('click', restart)
+    playGame.addEventListener('click', clearModal)
+})()
+
+// open modal
+const openModal = (() => {
+    const startGame = document.getElementById('start')
+    const modal = document.getElementById('modal')
+
+    const openModals = () => {
+        modal.style.display = 'grid'
+    }
+
+    startGame.addEventListener('click', openModals)
 })()

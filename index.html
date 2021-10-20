@@ -13,10 +13,36 @@
             Tic Tac Toe
         </h1>
 
-        <button id='restart'>
-            Restart
+        <button id='start'>
+            Start
         </button>
     </header>
+
+    <div class="modal" id='modal'>
+        <div class="modal-content">
+            <div class="inputBox">
+                <label for='playerOne'>
+                    Player One:
+                </label>
+                <input id='playerOne' class='inputOne'>
+                <button class="pBtn playerOneName" id='nameOne'>
+                    Sumbit
+                </button>
+            </div>
+            <div class="inputBox">
+                <label for='playerTwo'>
+                    Player Two:
+                </label>
+                <input id='playerTwo' class='inputTwo'>
+                <button class="pBtn playerTwoName" id='nameTwo'>
+                    Sumbit
+                </button>
+            </div>
+            <button id='playGame'>
+                Play Game
+            </button>
+        </div>
+    </div>
 
     <main>
         <div class="gameBoard">

@@ -8,10 +8,13 @@
 }
 
 html, body {
+  position: relative;
   font-size: 62.5%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background: #f0f8ffd0;
+  display: -ms-grid;
+  display: grid;
 }
 
 header {
@@ -26,8 +29,133 @@ header h1 {
   font-family: cursive, monospace;
 }
 
+header #start {
+  cursor: pointer;
+  height: 3rem;
+  width: 7rem;
+  border: none;
+  border-radius: 2rem;
+}
+
+header #start:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: 0.7s ease-in-out;
+  transition: 0.7s ease-in-out;
+}
+
+header #start:active {
+  -webkit-transform: scale(0.9s);
+          transform: scale(0.9s);
+  -webkit-transition: 0.7s ease-in-out;
+  transition: 0.7s ease-in-out;
+}
+
+.modal {
+  display: none;
+  place-items: center;
+  position: absolute;
+  background: #000000a4;
+  height: 106%;
+  width: 100%;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.modal .modal-content {
+  background: #3ed6fc;
+  border: none;
+  border-radius: 2rem;
+  height: 50%;
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.modal .modal-content .inputBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 1rem;
+}
+
+.modal .modal-content .inputBox label {
+  font-size: 2rem;
+  font-family: cursive, sans-serif;
+}
+
+.modal .modal-content .inputBox input {
+  font-family: cursive, sans-serif;
+  margin: 0 1.5rem;
+  height: 3rem;
+  width: 20rem;
+  border-radius: 2rem;
+  border: none;
+  outline: none;
+  font-size: 1.7rem;
+}
+
+.modal .modal-content .inputBox .pBtn {
+  cursor: pointer;
+  height: 3rem;
+  width: 7rem;
+  border: none;
+  border-radius: 2rem;
+}
+
+.modal .modal-content .inputBox .pBtn:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: 0.7s ease-in-out;
+  transition: 0.7s ease-in-out;
+}
+
+.modal .modal-content .inputBox .pBtn:active {
+  -webkit-transform: scale(0.9s);
+          transform: scale(0.9s);
+  -webkit-transition: 0.7s ease-in-out;
+  transition: 0.7s ease-in-out;
+}
+
+.modal .modal-content #playGame {
+  cursor: pointer;
+  height: 3rem;
+  width: 10rem;
+  border: none;
+  border-radius: 2rem;
+  margin-top: 3rem;
+}
+
+.modal .modal-content #playGame:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: 0.7s ease-in-out;
+  transition: 0.7s ease-in-out;
+}
+
+.modal .modal-content #playGame:active {
+  -webkit-transform: scale(0.9s);
+          transform: scale(0.9s);
+  -webkit-transition: 0.7s ease-in-out;
+  transition: 0.7s ease-in-out;
+}
+
 main {
-  height: 47.5rem;
+  height: 46rem;
   display: -ms-grid;
   display: grid;
   place-items: center;
