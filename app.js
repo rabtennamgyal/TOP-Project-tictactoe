@@ -1,7 +1,37 @@
+// This is a factory 🏭 function to create players for the game.
 function Player(name) {
     return {name}
 }
 
+
+// Module and method to open the modal.🌞
+const openModal = (() => {
+    const startGame = document.getElementById('start')
+    const modal = document.getElementById('modal')
+
+    const openModals = () => {
+        modal.style.display = 'grid'
+    }
+
+    startGame.addEventListener('click', openModals)
+})()
+
+
+// Module and method to close the modal.🌚
+const closeModal = (() => {
+    const playGame = document.getElementById('playGame')
+    const modal = document.getElementById('modal')
+
+    const clearModal = () => {
+        modal.style.display = 'none'
+    }
+
+    playGame.addEventListener('click', clearModal)
+})()
+
+
+// This module creates the board for the game 🎮 and also provides 
+// methods to fill the board and reset the board.🔨
 const gameBoard = (() => {
     const board = [
         '', '', '',
@@ -24,8 +54,38 @@ const gameBoard = (() => {
     return {getBoard, fillBoard, resetBoard}
 })()
 
-let x = true // This is the only global variable. It dictates Xs and Os.
 
+let x = true // This is the only global variable. It dictates Xs and Os turn.
+
+
+// This module get the player's name from the dom and stores it. 🔒
+const createPlayers = (() => {
+    // getting input element from the dom.
+    const inputOne = document.querySelector('.inputOne')
+    const inputTwo = document.querySelector('.inputTwo')
+
+    const createP1 = () => {
+        if (inputOne.value) {
+            let p1 = Player(inputOne.value)
+            inputOne.value = ''
+            return p1
+        }
+    }
+
+    const createP2 = () => {
+        if (inputTwo.value) {
+            let p2 = Player(inputTwo.value)
+            inputTwo.value = ''
+            return p2
+        }
+    }
+
+    return {createP1, createP2}
+})()
+
+
+// This module creates Xs and Os and renders them to the dom 
+// and also fills the board array in the gameBoard module. ❌ 🔮 ⭕
 const gameFlow = (() => {
     const board = gameBoard.getBoard()
     const box = document.querySelectorAll('.gameBox')
@@ -73,61 +133,22 @@ const gameFlow = (() => {
     })))
 })()
 
-let name1, name2
 
-const getName = (() => {
-    const btnOne = document.querySelector('.playerOneName')
-    const btnTwo = document.querySelector('.playerTwoName')
-    const one = document.querySelector('.inputOne')
-    const two = document.querySelector('.inputTwo')
-
-    const s1 = () => {
-        if (one.value) {
-            name1 = one.value
-            one.value = ''
-            console.log(name1)
-        }
-    }
-
-    const s2 = () => {
-        if (two.value) {
-            name2 = two.value
-            two.value = ''
-            console.log(name2)
-        }
-    }
-
-    btnOne.addEventListener('click', s1)
-    btnTwo.addEventListener('click', s2)
-})()
-
+// This module creates the logic to check the winner 🏆 & the loser 😭 || a draw 😴.
 const playGame = (() => {
     const board = gameBoard.getBoard()
-    const btnOne = document.querySelector('.playerOneName')
-    const btnTwo = document.querySelector('.playerTwoName')
-    const one = document.querySelector('.inputOne')
-    const two = document.querySelector('.inputTwo')
+    // getting the buttons from the dom.
+    const btn1 = document.getElementById('nameOne')
+    const btn2 = document.getElementById('nameTwo')
 
-    const s1 = () => {
-        if (one.value) {
-            let name1 = one.value
-            one.value = ''
-            console.log(name1)
-            return {name1}
-        }
-    }
+    let a, b
 
-    const s2 = () => {
-        if (two.value) {
-            let name2 = two.value
-            two.value = ''
-            console.log(name2)
-            return {name2}
-        }
-    }
-
-    btnOne.addEventListener('click', s1)
-    btnTwo.addEventListener('click', s2)
+    btn1.addEventListener('click', () => {
+        a = createPlayers.createP1()
+    })
+    btn2.addEventListener('click', () => {
+        b = createPlayers.createP2()
+    })
 
     const checkBoard = () => {
         let check = []
@@ -137,14 +158,12 @@ const playGame = (() => {
         let o = board.filter(el => el === '⭕')
 
         if (trueArr.length >= 3) {
-            const playerOne = Player(name1)
-            const playerTwo = Player(name2)
-
             if (board[0] !== '' && board[0] === board[1] && board[1] === board[2]) {
+                // remember, if you don't put name in the input; it throws an error for this case.
                 if (board[0] === '❌') {
-                    console.log(`${playerOne.name} wins`)
+                    console.log(`${a.name} wins`)
                 } else {
-                    console.log(`${playerTwo.name} wins`)
+                    console.log(`${b.name} wins`)
                 }
             } else if (board[0] !== '' && board[0] === board[3] && board[3] === board[6]) {
                 console.log('win')
@@ -169,28 +188,4 @@ const playGame = (() => {
     setInterval(() => {
         checkBoard()
     }, 1000)
-})()
-
-// start Game
-const startGame = (() => {
-    const playGame = document.getElementById('playGame')
-    const modal = document.getElementById('modal')
-
-    const clearModal = () => {
-        modal.style.display = 'none'
-    }
-
-    playGame.addEventListener('click', clearModal)
-})()
-
-// open modal
-const openModal = (() => {
-    const startGame = document.getElementById('start')
-    const modal = document.getElementById('modal')
-
-    const openModals = () => {
-        modal.style.display = 'grid'
-    }
-
-    startGame.addEventListener('click', openModals)
 })()
