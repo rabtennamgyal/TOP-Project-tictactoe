@@ -24,7 +24,6 @@ const gameBoard = (() => {
     return {getBoard, fillBoard, resetBoard}
 })()
 
-
 let x = true // This is the only global variable. It dictates Xs and Os.
 
 const gameFlow = (() => {
@@ -74,26 +73,27 @@ const gameFlow = (() => {
     })))
 })()
 
+let name1, name2
+
 const getName = (() => {
     const btnOne = document.querySelector('.playerOneName')
     const btnTwo = document.querySelector('.playerTwoName')
     const one = document.querySelector('.inputOne')
     const two = document.querySelector('.inputTwo')
-    let p1name, p2name
 
     const s1 = () => {
         if (one.value) {
-            p1name = one.value
+            name1 = one.value
             one.value = ''
-            console.log(p1name)
+            console.log(name1)
         }
     }
 
     const s2 = () => {
         if (two.value) {
-            p2name = two.value
+            name2 = two.value
             two.value = ''
-            console.log(p2name)
+            console.log(name2)
         }
     }
 
@@ -103,6 +103,31 @@ const getName = (() => {
 
 const playGame = (() => {
     const board = gameBoard.getBoard()
+    const btnOne = document.querySelector('.playerOneName')
+    const btnTwo = document.querySelector('.playerTwoName')
+    const one = document.querySelector('.inputOne')
+    const two = document.querySelector('.inputTwo')
+
+    const s1 = () => {
+        if (one.value) {
+            let name1 = one.value
+            one.value = ''
+            console.log(name1)
+            return {name1}
+        }
+    }
+
+    const s2 = () => {
+        if (two.value) {
+            let name2 = two.value
+            two.value = ''
+            console.log(name2)
+            return {name2}
+        }
+    }
+
+    btnOne.addEventListener('click', s1)
+    btnTwo.addEventListener('click', s2)
 
     const checkBoard = () => {
         let check = []
@@ -112,8 +137,15 @@ const playGame = (() => {
         let o = board.filter(el => el === '⭕')
 
         if (trueArr.length >= 3) {
+            const playerOne = Player(name1)
+            const playerTwo = Player(name2)
+
             if (board[0] !== '' && board[0] === board[1] && board[1] === board[2]) {
-                console.log('win')
+                if (board[0] === '❌') {
+                    console.log(`${playerOne.name} wins`)
+                } else {
+                    console.log(`${playerTwo.name} wins`)
+                }
             } else if (board[0] !== '' && board[0] === board[3] && board[3] === board[6]) {
                 console.log('win')
             } else if (board[0] !== '' && board[0] === board[4] && board[4] === board[8]) {
