@@ -18,7 +18,7 @@ html, body {
 }
 
 header {
-  height: 10rem;
+  height: 14rem;
   display: -ms-grid;
   display: grid;
   place-items: center;
@@ -55,6 +55,7 @@ header #start:active {
 }
 
 .modal {
+  z-index: 10;
   display: none;
   place-items: center;
   position: absolute;
@@ -69,7 +70,7 @@ header #start:active {
 }
 
 .modal .modal-content {
-  background: #3ed6fc;
+  background: #2c2b2b;
   border: none;
   border-radius: 2rem;
   height: 60%;
@@ -97,6 +98,7 @@ header #start:active {
 }
 
 .modal .modal-content .inputBox label {
+  color: #fff;
   font-size: 2rem;
   font-family: cursive, sans-serif;
 }
@@ -157,25 +159,24 @@ header #start:active {
   transition: 0.7s ease-in-out;
 }
 
-main {
-  height: 46rem;
+#mainOne {
+  height: 42rem;
   display: -ms-grid;
   display: grid;
   place-items: center;
 }
 
-main .gameBoard {
+#mainOne .gameBoard {
   height: 80%;
   width: 30%;
-  display: -ms-grid;
-  display: grid;
+  display: none;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
   -ms-grid-rows: (1fr)[3];
       grid-template-rows: repeat(3, 1fr);
 }
 
-main .gameBoard .gameBox {
+#mainOne .gameBoard .gameBox {
   cursor: pointer;
   border: solid;
   display: -ms-grid;
@@ -183,43 +184,63 @@ main .gameBoard .gameBox {
   place-items: center;
 }
 
-main .gameBoard .gameBox .elstyle {
+#mainOne .gameBoard .gameBox .elstyle {
   font-size: 3.5rem;
 }
 
-main .gameBoard #one {
+#mainOne .gameBoard #one {
   border-left: none;
   border-top: none;
 }
 
-main .gameBoard #two {
+#mainOne .gameBoard #two {
   border-top: none;
 }
 
-main .gameBoard #three {
+#mainOne .gameBoard #three {
   border-top: none;
   border-right: none;
 }
 
-main .gameBoard #four {
+#mainOne .gameBoard #four {
   border-left: none;
 }
 
-main .gameBoard #six {
+#mainOne .gameBoard #six {
   border-right: none;
 }
 
-main .gameBoard #seven {
+#mainOne .gameBoard #seven {
   border-left: none;
   border-bottom: none;
 }
 
-main .gameBoard #eight {
+#mainOne .gameBoard #eight {
   border-bottom: none;
 }
 
-main .gameBoard #nine {
+#mainOne .gameBoard #nine {
   border-right: none;
   border-bottom: none;
+}
+
+#mainTwo {
+  background: -webkit-gradient(linear, left top, right top, from(#ffcccc), to(#ccffff));
+  background: linear-gradient(to right, #ffcccc, #ccffff);
+  margin-top: 14rem;
+  position: absolute;
+  height: 43.5rem;
+  width: 100%;
+}
+
+#mainThree {
+  background: #242323;
+  position: absolute;
+  z-index: 20;
+  display: none;
+  place-items: center;
+  height: 103%;
+  width: 100%;
+  border: solid;
 }
 /*# sourceMappingURL=main.css.map */

@@ -15,7 +15,7 @@ html, body {
 }
 
 header {
-    height: 10rem;
+    height: 14rem;
     display: grid;
     place-items: center;
 
@@ -47,6 +47,7 @@ header {
 }
 
 .modal {
+    z-index: 10;
     display: none;
     place-items: center;
     position: absolute;
@@ -57,7 +58,7 @@ header {
     align-self: center;
 
     .modal-content {
-        background: #3ed6fc;
+        background: #2c2b2b;
         border: none;
         border-radius: 2rem;
         height: 60%;
@@ -72,6 +73,7 @@ header {
             margin: 1rem;
             
             label {
+                color: #fff;
                 font-size: 2rem;
                 font-family: cursive, sans-serif;
             }
@@ -127,15 +129,15 @@ header {
     }
 }
 
-main {
-    height: 46rem;
+#mainOne {
+    height: 42rem;
     display: grid;
     place-items: center;
 
     .gameBoard {
         height: 80%;
         width: 30%;
-        display: grid;
+        display: none;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(3, 1fr);
 
@@ -186,4 +188,23 @@ main {
             border-bottom: none;
         }
     }
+}
+
+#mainTwo {
+    background: linear-gradient(to right, #ffcccc, #ccffff);
+    margin-top: 14rem;
+    position: absolute;
+    height: 43.5rem;
+    width: 100%;
+}
+
+#mainThree {
+    background: #242323;
+    position: absolute;
+    z-index: 20;
+    display: none;
+    place-items: center;
+    height: 103%;
+    width: 100%;
+    border: solid;
 }

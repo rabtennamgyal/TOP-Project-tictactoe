@@ -4,7 +4,7 @@ function Player(name) {
 }
 
 
-// Module and method to open the modal.🌞
+// Module & method to open the modal.🌞
 const openModal = (() => {
     const startGame = document.getElementById('start')
     const modal = document.getElementById('modal')
@@ -17,21 +17,25 @@ const openModal = (() => {
 })()
 
 
-// Module and method to close the modal.🌚
+// Module & method to close the modal.🌚
 const closeModal = (() => {
     const playGame = document.getElementById('playGame')
     const modal = document.getElementById('modal')
+    const domBoard = document.querySelector('.gameBoard') // The dom element where Xs & Os will be rendered.
+    const placeholder = document.getElementById('mainTwo') 
 
     const clearModal = () => {
         modal.style.display = 'none'
+        domBoard.style.display = 'grid'
+        placeholder.style.display = 'none'
     }
 
     playGame.addEventListener('click', clearModal)
 })()
 
 
-// This module creates the board for the game 🎮 and also provides 
-// methods to fill the board and reset the board.🔨
+// This module creates the board for the game 🎮 & also 
+// provides methods to fill the board & reset it 🔨.
 const gameBoard = (() => {
     const board = [
         '', '', '',
@@ -55,10 +59,8 @@ const gameBoard = (() => {
 })()
 
 
-let x = true // This is the only global variable. It dictates Xs and Os turn.
-
-
-// This module get the player's name from the dom and stores it. 🔒
+// This module gets the player's name from the dom & creates a function that
+// creates player objects using the factory function from line 2 & returns it.
 const createPlayers = (() => {
     // getting input element from the dom.
     const inputOne = document.querySelector('.inputOne')
@@ -84,11 +86,12 @@ const createPlayers = (() => {
 })()
 
 
-// This module creates Xs and Os and renders them to the dom 
-// and also fills the board array in the gameBoard module. ❌ 🔮 ⭕
+// This module creates Xs and Os & renders them to the dom 
+// & also fills the board array in the gameBoard module. ❌ 🔮 ⭕
 const gameFlow = (() => {
     const board = gameBoard.getBoard()
     const box = document.querySelectorAll('.gameBox')
+    let x = true // Put this in the global scope if there is an error.
 
     const renderX = (e) => {
         for (let i = 0; i < board.length; i++) {
@@ -135,11 +138,17 @@ const gameFlow = (() => {
 
 
 // This module creates the logic to check the winner 🏆 & the loser 😭 || a draw 😴.
-const playGame = (() => {
+const checkWinner = (() => {
     const board = gameBoard.getBoard()
     // getting the buttons from the dom.
     const btn1 = document.getElementById('nameOne')
     const btn2 = document.getElementById('nameTwo')
+    // getting the result display element.
+    const results = document.getElementById('mainThree')
+
+    const displayResult = () => {
+        results.style.display = 'grid'
+    }
 
     let a, b
 
@@ -159,7 +168,7 @@ const playGame = (() => {
 
         if (trueArr.length >= 3) {
             if (board[0] !== '' && board[0] === board[1] && board[1] === board[2]) {
-                // remember, if you don't put name in the input; it throws an error for this case.
+                displayResult()
                 if (board[0] === '❌') {
                     console.log(`${a.name} wins`)
                 } else {
