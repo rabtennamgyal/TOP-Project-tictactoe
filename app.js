@@ -138,6 +138,7 @@ const gameFlow = (() => {
 
 
 // This module creates the logic to check the winner 🏆 & the loser 😭 || a draw 😴.
+// It also display the result to the players. 
 const checkWinner = (() => {
     const board = gameBoard.getBoard()
     // getting the buttons from the dom.
@@ -163,7 +164,6 @@ const checkWinner = (() => {
         el.textContent = final
         resultDisplay.appendChild(el)
         results.style.display = 'flex'
-        return
     }
 
     const checkBoard = () => {
@@ -175,61 +175,61 @@ const checkWinner = (() => {
 
         if (trueArr.length >= 3) {
             if (board[0] !== '' && board[0] === board[1] && board[1] === board[2]) {
-                displayResult()
                 if (board[0] === '❌') {
                     final = `${a.name} wins`
                 } else {
                     final = `${b.name} wins`
                 }
+                displayResult()
             } else if (board[0] !== '' && board[0] === board[3] && board[3] === board[6]) {
-                displayResult()
                 if (board[0] === '❌') {
                     final = `${a.name} wins`
                 } else {
                     final = `${b.name} wins`
                 }
+                displayResult()
             } else if (board[0] !== '' && board[0] === board[4] && board[4] === board[8]) {
-                displayResult()
                 if (board[0] === '❌') {
                     final = `${a.name} wins`
                 } else {
                     final = `${b.name} wins`
                 }
-            } else if (board[1] !== '' && board[1] === board[4] && board[4] === board[7]) {
                 displayResult()
+            } else if (board[1] !== '' && board[1] === board[4] && board[4] === board[7]) {
                 if (board[1] === '❌') {
                     final = `${a.name} wins`
                 } else {
                     final = `${b.name} wins`
                 }
+                displayResult()
             } else if (board[2] !== '' && board[2] === board[5] && board[5] === board[8]) {
-                displayResult()
                 if (board[2] === '❌') {
                     final = `${a.name} wins`
                 } else {
                     final = `${b.name} wins`
                 }
+                displayResult()
             } else if (board[2] !== '' && board[2] === board[4] && board[4] === board[6]) {
-                displayResult()
                 if (board[2] === '❌') {
                     final = `${a.name} wins`
                 } else {
                     final = `${b.name} wins`
                 }
-            } else if (board[3] !== '' && board[3] === board[4] && board[4] === board[5]) {
                 displayResult()
+            } else if (board[3] !== '' && board[3] === board[4] && board[4] === board[5]) {
                 if (board[3] === '❌') {
                     final = `${a.name} wins`
                 } else {
                     final = `${b.name} wins`
                 }
-            } else if (board[6] !== '' && board[6] === board[7] && board[7] === board[8]) {
                 displayResult()
+            } else if (board[6] !== '' && board[6] === board[7] && board[7] === board[8]) {
                 if (board[6] === '❌') {
                     final = `${a.name} wins`
                 } else {
                     final = `${b.name} wins`
                 }
+                displayResult()
             } else if (x.length === 5 &&  o.length === 4) {
                 final = 'It is a lousy draw.'
                 displayResult()
@@ -237,7 +237,28 @@ const checkWinner = (() => {
         } 
     }
 
-    setInterval(() => {
+    const foo = setInterval(() => {
         checkBoard()
     }, 1000)
+
+    return {foo}
 })()
+
+
+// This module will restart the game & clear the gameboard. 🧹
+const restartGame = (() => {
+    const mainThree = document.getElementById('mainThree')
+    const restart = document.getElementById('restartBtn')
+    const el = checkWinner.foo
+
+    restart.addEventListener('click', () => {
+        console.log('hi')
+        mainThree.style.display = 'none'
+        clearInterval(el)
+    })
+})()
+
+
+
+// 1. still needs work stoping the setInterval
+// 2. and needs to clear the board in the dom
