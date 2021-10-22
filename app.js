@@ -1,4 +1,4 @@
-// This is a factory 🏭 function to create players for the game.
+// Factory 🏭 function to create players for the game.
 function Player(name) {
     return {name}
 }
@@ -145,12 +145,10 @@ const checkWinner = (() => {
     const btn2 = document.getElementById('nameTwo')
     // getting the result display element.
     const results = document.getElementById('mainThree')
-
-    const displayResult = () => {
-        results.style.display = 'grid'
-    }
+    const resultDisplay = document.querySelector('.results')
 
     let a, b
+    let final
 
     btn1.addEventListener('click', () => {
         a = createPlayers.createP1()
@@ -158,6 +156,15 @@ const checkWinner = (() => {
     btn2.addEventListener('click', () => {
         b = createPlayers.createP2()
     })
+
+    const displayResult = () => {
+        const el = document.createElement('h1')
+        el.classList.add('h1style')
+        el.textContent = final
+        resultDisplay.appendChild(el)
+        results.style.display = 'flex'
+        return
+    }
 
     const checkBoard = () => {
         let check = []
@@ -170,54 +177,62 @@ const checkWinner = (() => {
             if (board[0] !== '' && board[0] === board[1] && board[1] === board[2]) {
                 displayResult()
                 if (board[0] === '❌') {
-                    console.log(`${a.name} wins`)
+                    final = `${a.name} wins`
                 } else {
-                    console.log(`${b.name} wins`)
+                    final = `${b.name} wins`
                 }
             } else if (board[0] !== '' && board[0] === board[3] && board[3] === board[6]) {
+                displayResult()
                 if (board[0] === '❌') {
-                    console.log(`${a.name} wins`)
+                    final = `${a.name} wins`
                 } else {
-                    console.log(`${b.name} wins`)
+                    final = `${b.name} wins`
                 }
             } else if (board[0] !== '' && board[0] === board[4] && board[4] === board[8]) {
+                displayResult()
                 if (board[0] === '❌') {
-                    console.log(`${a.name} wins`)
+                    final = `${a.name} wins`
                 } else {
-                    console.log(`${b.name} wins`)
+                    final = `${b.name} wins`
                 }
             } else if (board[1] !== '' && board[1] === board[4] && board[4] === board[7]) {
+                displayResult()
                 if (board[1] === '❌') {
-                    console.log(`${a.name} wins`)
+                    final = `${a.name} wins`
                 } else {
-                    console.log(`${b.name} wins`)
+                    final = `${b.name} wins`
                 }
             } else if (board[2] !== '' && board[2] === board[5] && board[5] === board[8]) {
+                displayResult()
                 if (board[2] === '❌') {
-                    console.log(`${a.name} wins`)
+                    final = `${a.name} wins`
                 } else {
-                    console.log(`${b.name} wins`)
+                    final = `${b.name} wins`
                 }
             } else if (board[2] !== '' && board[2] === board[4] && board[4] === board[6]) {
+                displayResult()
                 if (board[2] === '❌') {
-                    console.log(`${a.name} wins`)
+                    final = `${a.name} wins`
                 } else {
-                    console.log(`${b.name} wins`)
+                    final = `${b.name} wins`
                 }
             } else if (board[3] !== '' && board[3] === board[4] && board[4] === board[5]) {
+                displayResult()
                 if (board[3] === '❌') {
-                    console.log(`${a.name} wins`)
+                    final = `${a.name} wins`
                 } else {
-                    console.log(`${b.name} wins`)
+                    final = `${b.name} wins`
                 }
             } else if (board[6] !== '' && board[6] === board[7] && board[7] === board[8]) {
+                displayResult()
                 if (board[6] === '❌') {
-                    console.log(`${a.name} wins`)
+                    final = `${a.name} wins`
                 } else {
-                    console.log(`${b.name} wins`)
+                    final = `${b.name} wins`
                 }
             } else if (x.length === 5 &&  o.length === 4) {
-                console.log('draw')
+                final = 'It is a lousy draw.'
+                displayResult()
             }
         } 
     }
