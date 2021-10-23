@@ -37,7 +37,7 @@ const closeModal = (() => {
 // This module creates the board for the game 🎮 & also 
 // provides methods to fill the board & reset it 🔨.
 const gameBoard = (() => {
-    const board = [
+    let board = [
         '', '', '',
         '', '', '',
         '', '', ''
@@ -52,10 +52,18 @@ const gameBoard = (() => {
     }
 
     const resetBoard = () => {
-        console.log('Board resetted')
+        board.splice(0, board.length)
     }
 
-    return {getBoard, fillBoard, resetBoard}
+    const setBoard = () => {
+        board = [
+            '', '', '',
+            '', '', '',
+            '', '', ''
+        ]
+    }
+
+    return {getBoard, fillBoard, resetBoard, setBoard}
 })()
 
 
@@ -164,6 +172,7 @@ const checkWinner = (() => {
         el.textContent = final
         resultDisplay.appendChild(el)
         results.style.display = 'flex'
+        clearInterval(foo)
     }
 
     const checkBoard = () => {
@@ -241,7 +250,6 @@ const checkWinner = (() => {
         checkBoard()
     }, 1000)
 
-    return {foo}
 })()
 
 
@@ -249,16 +257,16 @@ const checkWinner = (() => {
 const restartGame = (() => {
     const mainThree = document.getElementById('mainThree')
     const restart = document.getElementById('restartBtn')
-    const el = checkWinner.foo
+    const domEl = document.querySelectorAll('.gameBox')
 
     restart.addEventListener('click', () => {
-        console.log('hi')
         mainThree.style.display = 'none'
-        clearInterval(el)
+        gameBoard.resetBoard()
+        gameBoard.setBoard()
+        domEl.forEach(el => el.innerHTML = '')
+        console.log(gameBoard.getBoard())
     })
 })()
 
 
-
-// 1. still needs work stoping the setInterval
 // 2. and needs to clear the board in the dom
