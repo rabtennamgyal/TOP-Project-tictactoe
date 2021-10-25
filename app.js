@@ -96,7 +96,7 @@ const createPlayers = (() => {
 
 // This module creates Xs and Os & renders them to the dom 
 // & also fills the board array in the gameBoard module. ❌ 🔮 ⭕
-const gameFlow = (() => {
+const gameFlow = () => {
     const board = gameBoard.getBoard()
     const box = document.querySelectorAll('.gameBox')
     let x = true // Put this in the global scope if there is an error.
@@ -142,22 +142,19 @@ const gameFlow = (() => {
             renderO(e)
         }
     })))
-})()
+}
 
 
+let final, a, b
 // This module creates the logic to check the winner 🏆 & the loser 😭 || a draw 😴.
 // It also display the result to the players. 
 const checkWinner = (() => {
-    const board = gameBoard.getBoard()
-    // getting the buttons from the dom.
     const btn1 = document.getElementById('nameOne')
     const btn2 = document.getElementById('nameTwo')
-    // getting the result display element.
+
     const results = document.getElementById('mainThree')
     const resultDisplay = document.querySelector('.results')
 
-    let a, b
-    let final
 
     btn1.addEventListener('click', () => {
         a = createPlayers.createP1()
@@ -166,16 +163,18 @@ const checkWinner = (() => {
         b = createPlayers.createP2()
     })
 
+
     const displayResult = () => {
         const el = document.createElement('h1')
         el.classList.add('h1style')
         el.textContent = final
         resultDisplay.appendChild(el)
         results.style.display = 'flex'
-        clearInterval(foo)
     }
 
     const checkBoard = () => {
+        console.log('still going')
+        const board = gameBoard.getBoard()
         let check = []
         board.forEach(el => el !== '' ? check.push(true) : check.push(false))
         let trueArr = check.filter(el => el === true)
@@ -190,6 +189,7 @@ const checkWinner = (() => {
                     final = `${b.name} wins`
                 }
                 displayResult()
+                gameBoard.resetBoard()
             } else if (board[0] !== '' && board[0] === board[3] && board[3] === board[6]) {
                 if (board[0] === '❌') {
                     final = `${a.name} wins`
@@ -197,6 +197,7 @@ const checkWinner = (() => {
                     final = `${b.name} wins`
                 }
                 displayResult()
+                gameBoard.resetBoard()
             } else if (board[0] !== '' && board[0] === board[4] && board[4] === board[8]) {
                 if (board[0] === '❌') {
                     final = `${a.name} wins`
@@ -204,6 +205,7 @@ const checkWinner = (() => {
                     final = `${b.name} wins`
                 }
                 displayResult()
+                gameBoard.resetBoard()
             } else if (board[1] !== '' && board[1] === board[4] && board[4] === board[7]) {
                 if (board[1] === '❌') {
                     final = `${a.name} wins`
@@ -211,6 +213,7 @@ const checkWinner = (() => {
                     final = `${b.name} wins`
                 }
                 displayResult()
+                gameBoard.resetBoard()
             } else if (board[2] !== '' && board[2] === board[5] && board[5] === board[8]) {
                 if (board[2] === '❌') {
                     final = `${a.name} wins`
@@ -218,6 +221,7 @@ const checkWinner = (() => {
                     final = `${b.name} wins`
                 }
                 displayResult()
+                gameBoard.resetBoard()
             } else if (board[2] !== '' && board[2] === board[4] && board[4] === board[6]) {
                 if (board[2] === '❌') {
                     final = `${a.name} wins`
@@ -225,6 +229,7 @@ const checkWinner = (() => {
                     final = `${b.name} wins`
                 }
                 displayResult()
+                gameBoard.resetBoard()
             } else if (board[3] !== '' && board[3] === board[4] && board[4] === board[5]) {
                 if (board[3] === '❌') {
                     final = `${a.name} wins`
@@ -232,6 +237,7 @@ const checkWinner = (() => {
                     final = `${b.name} wins`
                 }
                 displayResult()
+                gameBoard.resetBoard()
             } else if (board[6] !== '' && board[6] === board[7] && board[7] === board[8]) {
                 if (board[6] === '❌') {
                     final = `${a.name} wins`
@@ -239,34 +245,40 @@ const checkWinner = (() => {
                     final = `${b.name} wins`
                 }
                 displayResult()
+                gameBoard.resetBoard()
             } else if (x.length === 5 &&  o.length === 4) {
                 final = 'It is a lousy draw.'
                 displayResult()
+                gameBoard.resetBoard()
             }
         } 
     }
 
-    const foo = setInterval(() => {
+    let int = setInterval(() => {
         checkBoard()
     }, 1000)
-
 })()
+
 
 
 // This module will restart the game & clear the gameboard. 🧹
 const restartGame = (() => {
     const mainThree = document.getElementById('mainThree')
     const restart = document.getElementById('restartBtn')
-    const domEl = document.querySelectorAll('.gameBox')
+    const boxes = document.querySelectorAll('.gameBox')
 
     restart.addEventListener('click', () => {
         mainThree.style.display = 'none'
-        gameBoard.resetBoard()
+        // gameBoard.resetBoard()
         gameBoard.setBoard()
-        domEl.forEach(el => el.innerHTML = '')
-        console.log(gameBoard.getBoard())
+        boxes.forEach(el => el.removeChild(el.firstChild))
     })
 })()
 
 
-// 2. and needs to clear the board in the dom
+
+// gameFlow is set in an interval because the players should always be able to 
+// fill the dom with Xs and Os when they click it.
+setInterval(() => {
+    gameFlow()
+}, 100)
