@@ -267,12 +267,19 @@ const restartGame = (() => {
     const restart = document.getElementById('restartBtn')
     const boxes = document.querySelectorAll('.gameBox')
 
-    restart.addEventListener('click', () => {
+    function goAgain() {
         mainThree.style.display = 'none'
         // gameBoard.resetBoard()
         gameBoard.setBoard()
-        boxes.forEach(el => el.removeChild(el.firstChild))
-    })
+
+        for (let i = 0; i < boxes.length; i++) {
+            while (boxes[i].firstChild) {
+                boxes[i].removeChild(boxes[i].firstChild);
+            }
+        }
+    }
+
+    restart.addEventListener('click', goAgain)
 })()
 
 
