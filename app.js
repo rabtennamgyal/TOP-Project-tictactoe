@@ -22,15 +22,56 @@ const closeModal = (() => {
     const playGame = document.getElementById('playGame')
     const modal = document.getElementById('modal')
     const domBoard = document.querySelector('.gameBoard') // The dom element where Xs & Os will be rendered.
-    const placeholder = document.getElementById('mainTwo') 
+    const mainTwo = document.getElementById('mainTwo') 
 
     const clearModal = () => {
         modal.style.display = 'none'
         domBoard.style.display = 'grid'
-        placeholder.style.display = 'none'
+        mainTwo.style.display = 'none'
     }
 
     playGame.addEventListener('click', clearModal)
+})()
+
+
+// Module to end the game and go to home ⛪
+const home = (() => {
+    const homeBtn = document.getElementById('home')
+    const homeBtn1 = document.getElementById('home1')
+    const boxes = document.querySelectorAll('.gameBox')
+    const results = document.querySelector('.results')
+
+    function goAgain() {
+        results.innerHTML = ''
+        gameBoard.setBoard()
+
+        for (let i = 0; i < boxes.length; i++) {
+            while (boxes[i].firstChild) {
+                boxes[i].removeChild(boxes[i].firstChild);
+            }
+        }
+    }
+
+    function gotoHome() {
+        const mainTwo = document.getElementById('mainTwo') 
+        const domBoard = document.querySelector('.gameBoard') 
+        
+        mainTwo.style.display = 'grid'
+        domBoard.style.display = 'none'
+    }
+
+    function gotoHome1() {
+        const modal = document.getElementById('mainThree')
+        const domBoard = document.querySelector('.gameBoard') 
+        const mainTwo = document.getElementById('mainTwo')
+
+        mainTwo.style.display = 'grid'
+        modal.style.display = 'none'
+        domBoard.style.display = 'none'
+    }
+
+    homeBtn.addEventListener('click', (() => {gotoHome(), goAgain()}))
+    homeBtn1.addEventListener('click', (() => {gotoHome1(), goAgain()}))
 })()
 
 
@@ -145,7 +186,6 @@ const gameFlow = () => {
 }
 
 
-let final, a, b
 // This module creates the logic to check the winner 🏆 & the loser 😭 || a draw 😴.
 // It also display the result to the players. 
 const checkWinner = (() => {
@@ -155,6 +195,7 @@ const checkWinner = (() => {
     const results = document.getElementById('mainThree')
     const resultDisplay = document.querySelector('.results')
 
+    let final, a, b
 
     btn1.addEventListener('click', () => {
         a = createPlayers.createP1()
@@ -254,7 +295,7 @@ const checkWinner = (() => {
         } 
     }
 
-    let int = setInterval(() => {
+    setInterval(() => {
         checkBoard()
     }, 1000)
 })()
@@ -266,10 +307,11 @@ const restartGame = (() => {
     const mainThree = document.getElementById('mainThree')
     const restart = document.getElementById('restartBtn')
     const boxes = document.querySelectorAll('.gameBox')
+    const results = document.querySelector('.results')
 
     function goAgain() {
         mainThree.style.display = 'none'
-        // gameBoard.resetBoard()
+        results.innerHTML = ''
         gameBoard.setBoard()
 
         for (let i = 0; i < boxes.length; i++) {

@@ -29,7 +29,20 @@ header h1 {
   font-family: cursive, monospace;
 }
 
-header #start {
+header .options {
+  height: 4rem;
+  width: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header .options #start, header .options #home {
   color: #fff;
   background: #000;
   cursor: pointer;
@@ -40,14 +53,14 @@ header #start {
   font-family: cursive, sans-serif;
 }
 
-header #start:hover {
+header .options #start:hover, header .options #home:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
   -webkit-transition: 0.7s ease-in-out;
   transition: 0.7s ease-in-out;
 }
 
-header #start:active {
+header .options #start:active, header .options #home:active {
   -webkit-transform: scale(0.9s);
           transform: scale(0.9s);
   -webkit-transition: 0.7s ease-in-out;
@@ -229,6 +242,9 @@ header #start:active {
   position: absolute;
   height: 43.5rem;
   width: 100%;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
 }
 
 #mainThree {
@@ -260,14 +276,16 @@ header #start:active {
 }
 
 #mainThree .result .btn {
-  display: -ms-grid;
-  display: grid;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  width: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  justify-self: center;
 }
 
 #mainThree .result .btn button {
@@ -276,7 +294,6 @@ header #start:active {
   font-family: cursive, sans-serif;
   height: 4rem;
   width: 10rem;
-  margin: 1rem;
   border: none;
   border-radius: 2rem;
   background: #000;

@@ -13,9 +13,15 @@
             Tic Tac Toe
         </h1>
 
-        <button id='start'>
-            start
-        </button>
+        <div class="options">
+            <button id='start'>
+                start
+            </button>
+
+            <button id='home'>
+                home
+            </button>
+        </div>
     </header>
 
     <div class="modal" id='modal'>
@@ -25,24 +31,29 @@
                     Player One:
                 </label>
                 <input id='playerOne' class='inputOne'>
+
                 <button class="pBtn" id='nameOne'>
                     Sumbit
                 </button>
             </div>
+
             <div class="inputBox">
                 <label for='playerTwo'>
                     Player Two:
                 </label>
                 <input id='playerTwo' class='inputTwo'>
+
                 <button class="pBtn" id='nameTwo'>
                     Sumbit
                 </button>
             </div>
+
             <button id='playGame'>
                 Play Game
             </button>
         </div>
     </div>
+
 
     <main id='mainOne'>
         <div class="gameBoard">
@@ -58,11 +69,12 @@
         </div>
     </main>
 
+
     <main id='mainTwo'>
         <div class="placeholder">
-            <!-- 
-                There will be some animation here. Need to learn it.
-            -->
+            <h1>
+                There is where players will choose whether to play against other players or AI.
+            </h1>
         </div>
     </main>
 
@@ -74,6 +86,10 @@
             <div class="btn">
                 <button id='restartBtn'>
                     Restart
+                </button>
+
+                <button id='home1'>
+                    Home
                 </button>
             </div>
 
