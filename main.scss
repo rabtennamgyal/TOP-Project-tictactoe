@@ -24,34 +24,34 @@ header {
         font-family: cursive, monospace;
     }
 
-    .options {
-        height: 4rem;
-        width: 20%;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
+    // .options {
+    //     height: 4rem;
+    //     width: 20%;
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
 
-        #start, #home {
-            color: #fff;
-            background: #000;
-            cursor: pointer;
-            height: 3rem;
-            width: 7rem;
-            border: none;
-            border-radius: 2rem;
-            font-family: cursive, sans-serif;
+    //     #home {
+    //         color: #fff;
+    //         background: #000;
+    //         cursor: pointer;
+    //         height: 3rem;
+    //         width: 7rem;
+    //         border: none;
+    //         border-radius: 2rem;
+    //         font-family: cursive, sans-serif;
     
-            &:hover {
-                transform: scale(1.1);
-                transition: 0.7s ease-in-out;
-            }
+    //         &:hover {
+    //             transform: scale(1.1);
+    //             transition: 0.7s ease-in-out;
+    //         }
     
-            &:active {
-                transform: scale(0.9s);
-                transition: 0.7s ease-in-out;
-            }
-        }
-    }
+    //         &:active {
+    //             transform: scale(0.9s);
+    //             transition: 0.7s ease-in-out;
+    //         }
+    //     }
+    // }
 }
 
 .modal {
@@ -205,6 +205,61 @@ header {
     width: 100%;
     display: grid;
     place-items: center;
+
+    .placeholder {
+        height: 100%;
+        width: 100%;
+        display: grid;
+        place-items: center;
+
+        .divOne {
+            width: 57%;
+            display: flex;
+            justify-content: space-between;
+
+            #ninja {
+                height: 4rem;
+            }
+        }
+        
+        .content {
+            height: 80%;
+            width: 50%;
+            display: grid;
+            place-items: center;
+
+            h1 {
+                font-size: 3rem;
+                font-family: cursive, sans-serif;
+            }
+
+            .divTwo {
+
+                button {
+                    cursor: pointer;
+                    border: none;
+                    border-radius: 1px;
+                    font-size: 2rem;
+                    font-family: cursive, sans-serif;
+                    background: #000;
+                    color: #fff;
+                    height: 5rem;
+                    width: 20rem;
+                    margin: 0 3rem;
+
+                    &:hover {
+                        transform: scale(1.1);
+                        transition: 0.7s;
+                    }
+
+                    &:active {
+                        transform: scale(0.99);
+                        transition: 0.7s;
+                    }
+                }
+            }
+        }
+    }
 }
 
 #mainThree {

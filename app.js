@@ -36,13 +36,14 @@ const closeModal = (() => {
 
 // Module to end the game and go to home ⛪
 const home = (() => {
-    const homeBtn = document.getElementById('home')
+    // const homeBtn = document.getElementById('home')
     const homeBtn1 = document.getElementById('home1')
     const boxes = document.querySelectorAll('.gameBox')
     const results = document.querySelector('.results')
 
     function goAgain() {
         results.innerHTML = ''
+        gameBoard.resetBoard()
         gameBoard.setBoard()
 
         for (let i = 0; i < boxes.length; i++) {
@@ -52,13 +53,13 @@ const home = (() => {
         }
     }
 
-    function gotoHome() {
-        const mainTwo = document.getElementById('mainTwo') 
-        const domBoard = document.querySelector('.gameBoard') 
+    // function gotoHome() {
+    //     const mainTwo = document.getElementById('mainTwo') 
+    //     const domBoard = document.querySelector('.gameBoard') 
         
-        mainTwo.style.display = 'grid'
-        domBoard.style.display = 'none'
-    }
+    //     mainTwo.style.display = 'grid'
+    //     domBoard.style.display = 'none'
+    // }
 
     function gotoHome1() {
         const modal = document.getElementById('mainThree')
@@ -70,7 +71,7 @@ const home = (() => {
         domBoard.style.display = 'none'
     }
 
-    homeBtn.addEventListener('click', (() => {gotoHome(), goAgain()}))
+    // homeBtn.addEventListener('click', (() => {gotoHome(), goAgain()}))
     homeBtn1.addEventListener('click', (() => {gotoHome1(), goAgain()}))
 })()
 

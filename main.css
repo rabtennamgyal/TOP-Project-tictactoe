@@ -29,44 +29,6 @@ header h1 {
   font-family: cursive, monospace;
 }
 
-header .options {
-  height: 4rem;
-  width: 20%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-header .options #start, header .options #home {
-  color: #fff;
-  background: #000;
-  cursor: pointer;
-  height: 3rem;
-  width: 7rem;
-  border: none;
-  border-radius: 2rem;
-  font-family: cursive, sans-serif;
-}
-
-header .options #start:hover, header .options #home:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
-  -webkit-transition: 0.7s ease-in-out;
-  transition: 0.7s ease-in-out;
-}
-
-header .options #start:active, header .options #home:active {
-  -webkit-transform: scale(0.9s);
-          transform: scale(0.9s);
-  -webkit-transition: 0.7s ease-in-out;
-  transition: 0.7s ease-in-out;
-}
-
 .modal {
   z-index: 10;
   display: none;
@@ -245,6 +207,68 @@ header .options #start:active, header .options #home:active {
   display: -ms-grid;
   display: grid;
   place-items: center;
+}
+
+#mainTwo .placeholder {
+  height: 100%;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+#mainTwo .placeholder .divOne {
+  width: 57%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#mainTwo .placeholder .divOne #ninja {
+  height: 4rem;
+}
+
+#mainTwo .placeholder .content {
+  height: 80%;
+  width: 50%;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+#mainTwo .placeholder .content h1 {
+  font-size: 3rem;
+  font-family: cursive, sans-serif;
+}
+
+#mainTwo .placeholder .content .divTwo button {
+  cursor: pointer;
+  border: none;
+  border-radius: 1px;
+  font-size: 2rem;
+  font-family: cursive, sans-serif;
+  background: #000;
+  color: #fff;
+  height: 5rem;
+  width: 20rem;
+  margin: 0 3rem;
+}
+
+#mainTwo .placeholder .content .divTwo button:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
+#mainTwo .placeholder .content .divTwo button:active {
+  -webkit-transform: scale(0.99);
+          transform: scale(0.99);
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
 }
 
 #mainThree {
