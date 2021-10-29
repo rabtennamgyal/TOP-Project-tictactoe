@@ -4,7 +4,7 @@ function Player(name) {
 }
 
 
-// Module & method to open the modal.🌞
+// Module & method to open the modal for p.v.p🌞
 const openModal = (() => {
     const startGame = document.getElementById('start')
     const modal = document.getElementById('modal')
@@ -17,7 +17,7 @@ const openModal = (() => {
 })()
 
 
-// Module & method to close the modal.🌚
+// Module & method to close the modal p.v.p 🌚
 const closeModal = (() => {
     const playGame = document.getElementById('playGame')
     const modal = document.getElementById('modal')
@@ -31,6 +31,36 @@ const closeModal = (() => {
     }
 
     playGame.addEventListener('click', clearModal)
+})()
+
+
+// Module & method to open the modal for p.v.ai
+const openModal1 = (() => {
+    const startGame = document.getElementById('ai')
+    const modal = document.getElementById('modal1')
+
+    const openModals = () => {
+        modal.style.display = 'grid'
+    }
+
+    startGame.addEventListener('click', openModals)
+})()
+
+
+// Module & method to close the modal for p.v.ai
+const closeModal1 = (() => {
+    const modal = document.getElementById('modal1')
+    const playGame = document.getElementById('playAI')
+    const domBoard = document.querySelector('.gameBoard') 
+    const mainTwo = document.getElementById('mainTwo') 
+
+    const closeModals = () => {
+        modal.style.display = 'none'
+        domBoard.style.display = 'grid'
+        mainTwo.style.display = 'none'
+    }
+
+    playGame.addEventListener('click', closeModals)
 })()
 
 
@@ -109,8 +139,9 @@ const gameBoard = (() => {
 })()
 
 
-// This module gets the player's name from the dom & creates a function that
-// creates player objects using the factory function from line 2 & returns it.
+// This module gets the player's name from the dom & creates a function that 
+// creates player objects using the factory function from line 2 & returns it. 
+// (Player Vs Player)
 const createPlayers = (() => {
     // getting input element from the dom.
     const inputOne = document.querySelector('.inputOne')
@@ -136,9 +167,28 @@ const createPlayers = (() => {
 })()
 
 
+// This module gets the player's name from the dom & creates a function that 
+// creates player objects using the factory function from line 2 & returns it. 
+// (Player Vs AI)
+const createPlayer = (() => {
+    const input = document.querySelector('.inputPlayer')
+
+    const createP0 = () => {
+        if (input.value) {
+            let player = Player(input.value)
+            input.value = ''
+            return player
+        }
+    }
+
+    return {createP0}
+})()
+
+
 // This module creates Xs and Os & renders them to the dom 
 // & also fills the board array in the gameBoard module. ❌ 🔮 ⭕
-const gameFlow = () => {
+// (Player Vs Player)
+const gameFlows = () => {
     const board = gameBoard.getBoard()
     const box = document.querySelectorAll('.gameBox')
     let x = true // Put this in the global scope if there is an error.
@@ -187,8 +237,115 @@ const gameFlow = () => {
 }
 
 
+// This module creates Xs and Os & renders them to the dom 
+// & also fills the board array in the gameBoard module. ❌ 🔮 ⭕
+// (Player Vs AI)
+const gameFlow = () => {
+    const board = gameBoard.getBoard()
+    const box = document.querySelectorAll('.gameBox')
+    let x = true
+
+    // this is for getting the dom board 
+    const data = []
+    box.forEach(el => data.push(el.getAttribute('data-index')))
+
+    const renderO = () => {
+        let random = Math.ceil(Math.random() * 9) - 1
+        let str = random.toString()
+        let target
+        const ell = document.createElement('p')
+
+        for (let i = 0; i < board.length; i++) {
+            if (board[i] === '') {
+                gameBoard.fillBoard(random, 1, '⭕')
+                if (str === data[0]) {
+                    target = document.querySelector('[data-index="0"]')
+                    ell.classList.add('elstyle')
+                    ell.textContent = '⭕'
+                    target.appendChild(ell)
+                }
+                if (str === data[1]) {
+                    target = document.querySelector('[data-index="1"]')
+                    ell.classList.add('elstyle')
+                    ell.textContent = '⭕'
+                    target.appendChild(ell)
+                }
+                if (str === data[2]) {
+                    target = document.querySelector('[data-index="2"]')
+                    ell.classList.add('elstyle')
+                    ell.textContent = '⭕'
+                    target.appendChild(ell)
+                }
+                if (str === data[3]) {
+                    target = document.querySelector('[data-index="3"]')
+                    ell.classList.add('elstyle')
+                    ell.textContent = '⭕'
+                    target.appendChild(ell)
+                }
+                if (str === data[4]) {
+                    target = document.querySelector('[data-index="4"]')
+                    ell.classList.add('elstyle')
+                    ell.textContent = '⭕'
+                    target.appendChild(ell)
+                }
+                if (str === data[5]) {
+                    target = document.querySelector('[data-index="5"]')
+                    ell.classList.add('elstyle')
+                    ell.textContent = '⭕'
+                    target.appendChild(ell)
+                }
+                if (str === data[6]) {
+                    target = document.querySelector('[data-index="6"]')
+                    ell.classList.add('elstyle')
+                    ell.textContent = '⭕'
+                    target.appendChild(ell)
+                }
+                if (str === data[7]) {
+                    target = document.querySelector('[data-index="7"]')
+                    ell.classList.add('elstyle')
+                    ell.textContent = '⭕'
+                    target.appendChild(ell)
+                }
+                if (str === data[8]) {
+                    target = document.querySelector('[data-index="8"]')
+                    ell.classList.add('elstyle')
+                    ell.textContent = '⭕'
+                    target.appendChild(ell)
+                }
+            }
+        }
+    }
+
+    const renderX = (e) => {
+        for (let i = 0; i < board.length; i++) {
+            const target = e.target
+            const data = target.getAttribute('data-index')
+            const el = document.createElement('p')
+            el.classList.add('elstyle')
+            if (board[i] === '') {
+                if (i === Number(data)) {
+                    gameBoard.fillBoard(i, 1, '❌')
+                    console.log(gameBoard.getBoard())
+                    el.textContent = `${board[i]}`
+                    target.appendChild(el)
+                    x = false
+                    renderO()
+                } 
+            }
+        }
+    }
+
+    box.forEach(el => el.addEventListener('click', (e) => {
+        if (x) {
+            renderX(e)
+        }
+    }))
+}
+
+
 // This module creates the logic to check the winner 🏆 & the loser 😭 || a draw 😴.
 // It also display the result to the players. 
+// (Player vs Player)
 const checkWinner = (() => {
     const btn1 = document.getElementById('nameOne')
     const btn2 = document.getElementById('nameTwo')
@@ -302,6 +459,21 @@ const checkWinner = (() => {
 })()
 
 
+// This module creates the logic to check the winner 🏆 & the loser 😭 || a draw 😴.
+// It also display the result to the players. 
+// (Player vs AI)
+const checkWinners = (() => {
+    const btn = document.getElementById('nameZero')
+
+    let player
+
+    btn.addEventListener('click', () => {
+        player = createPlayer.createP0()
+        console.log(player)
+    })
+})()
+
+
 
 // This module will restart the game & clear the gameboard. 🧹
 const restartGame = (() => {
@@ -331,4 +503,5 @@ const restartGame = (() => {
 // fill the dom with Xs and Os when they click it.
 setInterval(() => {
     gameFlow()
+    // gameFlows()
 }, 100)
