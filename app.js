@@ -237,27 +237,48 @@ const gameFlows = () => {
 }
 
 
+// this array will be used as a means to check if a number already exist here.
+// If a number in present in the array, then it means it's corresponding dom element has 
+// already been filled.
+let arr = [] 
+
+// This function generates a random number 🙄
+// Make it return a number that isn't in the arr variable.
+
+function generateRandom() {
+    // let num = Math.ceil(Math.random() * 9) - 1
+    let newArr = []
+
+    for (let i = 0; i < 8; i++) {
+        if (!arr.includes(i)) {
+            newArr.push(i)
+        }
+    }
+    let random = newArr[Math.floor(Math.random() * newArr.length)]
+    return random
+}
+
+
 // This module creates Xs and Os & renders them to the dom 
 // & also fills the board array in the gameBoard module. ❌ 🔮 ⭕
 // (Player Vs AI)
 const gameFlow = () => {
     const board = gameBoard.getBoard()
     const box = document.querySelectorAll('.gameBox')
-    let x = true
-
-    // this is for getting the dom board 
     const data = []
     box.forEach(el => data.push(el.getAttribute('data-index')))
 
+    let x = true
+
     const renderO = () => {
-        let random = Math.ceil(Math.random() * 9) - 1
-        let str = random.toString()
-        let target
+        x = true 
+        let number = generateRandom()
+        let str = number.toString()
         const ell = document.createElement('p')
 
         for (let i = 0; i < board.length; i++) {
+            gameBoard.fillBoard(number, 1, '⭕')
             if (board[i] === '') {
-                gameBoard.fillBoard(random, 1, '⭕')
                 if (str === data[0]) {
                     target = document.querySelector('[data-index="0"]')
                     ell.classList.add('elstyle')
@@ -313,7 +334,11 @@ const gameFlow = () => {
                     target.appendChild(ell)
                 }
             }
+            console.log(gameBoard.getBoard())
+            console.log(number)
         }
+
+        arr.push(number)
     }
 
     const renderX = (e) => {
@@ -325,10 +350,11 @@ const gameFlow = () => {
             if (board[i] === '') {
                 if (i === Number(data)) {
                     gameBoard.fillBoard(i, 1, '❌')
-                    console.log(gameBoard.getBoard())
                     el.textContent = `${board[i]}`
                     target.appendChild(el)
                     x = false
+                    arr.push(i)
+                    console.log(arr)
                     renderO()
                 } 
             }
@@ -346,117 +372,7 @@ const gameFlow = () => {
 // This module creates the logic to check the winner 🏆 & the loser 😭 || a draw 😴.
 // It also display the result to the players. 
 // (Player vs Player)
-const checkWinner = (() => {
-    const btn1 = document.getElementById('nameOne')
-    const btn2 = document.getElementById('nameTwo')
 
-    const results = document.getElementById('mainThree')
-    const resultDisplay = document.querySelector('.results')
-
-    let final, a, b
-
-    btn1.addEventListener('click', () => {
-        a = createPlayers.createP1()
-    })
-    btn2.addEventListener('click', () => {
-        b = createPlayers.createP2()
-    })
-
-
-    const displayResult = () => {
-        const el = document.createElement('h1')
-        el.classList.add('h1style')
-        el.textContent = final
-        resultDisplay.appendChild(el)
-        results.style.display = 'flex'
-    }
-
-    const checkBoard = () => {
-        console.log('still going')
-        const board = gameBoard.getBoard()
-        let check = []
-        board.forEach(el => el !== '' ? check.push(true) : check.push(false))
-        let trueArr = check.filter(el => el === true)
-        let x = board.filter(el => el === '❌')
-        let o = board.filter(el => el === '⭕')
-
-        if (trueArr.length >= 3) {
-            if (board[0] !== '' && board[0] === board[1] && board[1] === board[2]) {
-                if (board[0] === '❌') {
-                    final = `${a.name} wins`
-                } else {
-                    final = `${b.name} wins`
-                }
-                displayResult()
-                gameBoard.resetBoard()
-            } else if (board[0] !== '' && board[0] === board[3] && board[3] === board[6]) {
-                if (board[0] === '❌') {
-                    final = `${a.name} wins`
-                } else {
-                    final = `${b.name} wins`
-                }
-                displayResult()
-                gameBoard.resetBoard()
-            } else if (board[0] !== '' && board[0] === board[4] && board[4] === board[8]) {
-                if (board[0] === '❌') {
-                    final = `${a.name} wins`
-                } else {
-                    final = `${b.name} wins`
-                }
-                displayResult()
-                gameBoard.resetBoard()
-            } else if (board[1] !== '' && board[1] === board[4] && board[4] === board[7]) {
-                if (board[1] === '❌') {
-                    final = `${a.name} wins`
-                } else {
-                    final = `${b.name} wins`
-                }
-                displayResult()
-                gameBoard.resetBoard()
-            } else if (board[2] !== '' && board[2] === board[5] && board[5] === board[8]) {
-                if (board[2] === '❌') {
-                    final = `${a.name} wins`
-                } else {
-                    final = `${b.name} wins`
-                }
-                displayResult()
-                gameBoard.resetBoard()
-            } else if (board[2] !== '' && board[2] === board[4] && board[4] === board[6]) {
-                if (board[2] === '❌') {
-                    final = `${a.name} wins`
-                } else {
-                    final = `${b.name} wins`
-                }
-                displayResult()
-                gameBoard.resetBoard()
-            } else if (board[3] !== '' && board[3] === board[4] && board[4] === board[5]) {
-                if (board[3] === '❌') {
-                    final = `${a.name} wins`
-                } else {
-                    final = `${b.name} wins`
-                }
-                displayResult()
-                gameBoard.resetBoard()
-            } else if (board[6] !== '' && board[6] === board[7] && board[7] === board[8]) {
-                if (board[6] === '❌') {
-                    final = `${a.name} wins`
-                } else {
-                    final = `${b.name} wins`
-                }
-                displayResult()
-                gameBoard.resetBoard()
-            } else if (x.length === 5 &&  o.length === 4) {
-                final = 'It is a lousy draw.'
-                displayResult()
-                gameBoard.resetBoard()
-            }
-        } 
-    }
-
-    setInterval(() => {
-        checkBoard()
-    }, 1000)
-})()
 
 
 // This module creates the logic to check the winner 🏆 & the loser 😭 || a draw 😴.
@@ -471,6 +387,8 @@ const checkWinners = (() => {
         player = createPlayer.createP0()
         console.log(player)
     })
+
+    
 })()
 
 
@@ -505,3 +423,4 @@ setInterval(() => {
     gameFlow()
     // gameFlows()
 }, 100)
+
