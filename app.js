@@ -3,7 +3,6 @@ function Player(name) {
     return {name}
 }
 
-let foo
 
 // Module & method to open the modal for p.v.p🌞
 const openModal = (() => {
@@ -29,7 +28,6 @@ const closeModal = (() => {
         modal.style.display = 'none'
         domBoard.style.display = 'grid'
         mainTwo.style.display = 'none'
-        foo = true
     }
 
     playGame.addEventListener('click', clearModal)
@@ -68,7 +66,6 @@ const closeModal1 = (() => {
 
 // Module to end the game and go to home ⛪
 const home = (() => {
-    // const homeBtn = document.getElementById('home')
     const homeBtn1 = document.getElementById('home1')
     const boxes = document.querySelectorAll('.gameBox')
     const results = document.querySelector('.results')
@@ -77,6 +74,8 @@ const home = (() => {
         results.innerHTML = ''
         gameBoard.resetBoard()
         gameBoard.setBoard()
+        gameBoard2.resetBoard2()
+        gameBoard2.setBoard2()
 
         for (let i = 0; i < boxes.length; i++) {
             while (boxes[i].firstChild) {
@@ -101,6 +100,8 @@ const home = (() => {
 
 // This module creates the board for the game 🎮 & also 
 // provides methods to fill the board & reset it 🔨.
+
+// Player vs Player
 const gameBoard = (() => {
     let board = [
         '', '', '',
@@ -129,6 +130,41 @@ const gameBoard = (() => {
     }
 
     return {getBoard, fillBoard, resetBoard, setBoard}
+})()
+
+
+// This module creates the board for the game 🎮 & also 
+// provides methods to fill the board & reset it 🔨.
+
+// Player vs AI
+const gameBoard2 = (() => {
+    let board2 = [
+        '', '', '',
+        '', '', '',
+        '', '', ''
+    ]
+
+    const getBoard2 = () => {
+        return board2
+    }
+
+    const fillBoard2 = (index, count, el) => {
+        board2.splice(index, count, el)
+    }
+
+    const resetBoard2 = () => {
+        board2.splice(0, board2.length)
+    }
+
+    const setBoard2 = () => {
+        board2 = [
+            '', '', '',
+            '', '', '',
+            '', '', ''
+        ]
+    }
+
+    return {getBoard2, fillBoard2, resetBoard2, setBoard2}
 })()
 
 
@@ -251,6 +287,7 @@ function generateRandom() {
     }
 
     let random = newArr[Math.floor(Math.random() * newArr.length)]
+
     return random
 }
 
@@ -260,7 +297,7 @@ function generateRandom() {
 
 // (Player Vs AI)
 const gameFlow = () => {
-    const board = gameBoard.getBoard()
+    const board2 = gameBoard2.getBoard2()
     const box = document.querySelectorAll('.gameBox')
     const data = []
     box.forEach(el => data.push(el.getAttribute('data-index')))
@@ -273,9 +310,9 @@ const gameFlow = () => {
         let str = number.toString()
         const ell = document.createElement('p')
 
-        for (let i = 0; i < board.length; i++) {
-            gameBoard.fillBoard(number, 1, '⭕')
-            if (board[i] === '') {
+        for (let i = 0; i < board2.length; i++) {
+            gameBoard2.fillBoard2(number, 1, '⭕')
+            if (board2[i] === '') {
                 if (str === data[0]) {
                     target = document.querySelector('[data-index="0"]')
                     ell.classList.add('elstyle')
@@ -337,15 +374,15 @@ const gameFlow = () => {
     }
 
     const renderX = (e) => {
-        for (let i = 0; i < board.length; i++) {
+        for (let i = 0; i < board2.length; i++) {
             const target = e.target
             const data = target.getAttribute('data-index')
             const el = document.createElement('p')
             el.classList.add('elstyle')
-            if (board[i] === '') {
+            if (board2[i] === '') {
                 if (i === Number(data)) {
-                    gameBoard.fillBoard(i, 1, '❌')
-                    el.textContent = `${board[i]}`
+                    gameBoard2.fillBoard2(i, 1, '❌')
+                    el.textContent = `${board2[i]}`
                     target.appendChild(el)
                     x = false
                     arr.push(i)
@@ -479,6 +516,7 @@ const checkWinner = (() => {
 
 // This module creates the logic to check the winner 🏆 & the loser 😭 || a draw 😴.
 // It also display the result to the players. 
+
 // (Player vs AI)
 const checkWinners = (() => {
     const btn = document.getElementById('nameZero')
@@ -501,7 +539,7 @@ const checkWinners = (() => {
     }
         
     const checkBoard = () => {
-        const board = gameBoard.getBoard()
+        const board = gameBoard2.getBoard2()
         let check = []
         board.forEach(el => el !== '' ? check.push(true) : check.push(false))
         let trueArr = check.filter(el => el === true)
@@ -516,7 +554,7 @@ const checkWinners = (() => {
                     final = 'AI Wins 👾'
                 }
                 displayResult()
-                gameBoard.resetBoard()
+                gameBoard2.resetBoard2()
             } else if (board[0] !== '' && board[0] === board[3] && board[3] === board[6]) {
                 if (board[0] === '❌') {
                     final = `${player.name} wins 🦄`
@@ -524,7 +562,7 @@ const checkWinners = (() => {
                     final = 'AI Wins 👾'
                 }
                 displayResult()
-                gameBoard.resetBoard()
+                gameBoard2.resetBoard2()
             } else if (board[0] !== '' && board[0] === board[4] && board[4] === board[8]) {
                 if (board[0] === '❌') {
                     final = `${player.name} wins 🦄`
@@ -532,7 +570,7 @@ const checkWinners = (() => {
                     final = 'AI Wins 👾'
                 }
                 displayResult()
-                gameBoard.resetBoard()
+                gameBoard2.resetBoard2()
             } else if (board[1] !== '' && board[1] === board[4] && board[4] === board[7]) {
                 if (board[1] === '❌') {
                     final = `${player.name} wins 🦄`
@@ -540,7 +578,7 @@ const checkWinners = (() => {
                     final = 'AI Wins 👾'
                 }
                 displayResult()
-                gameBoard.resetBoard()
+                gameBoard2.resetBoard2()
             } else if (board[2] !== '' && board[2] === board[5] && board[5] === board[8]) {
                 if (board[2] === '❌') {
                     final = `${player.name} wins 🦄`
@@ -548,7 +586,7 @@ const checkWinners = (() => {
                     final = 'AI Wins 👾'
                 }
                 displayResult()
-                gameBoard.resetBoard()
+                gameBoard2.resetBoard2()
             } else if (board[2] !== '' && board[2] === board[4] && board[4] === board[6]) {
                 if (board[2] === '❌') {
                     final = `${player.name} wins 🦄`
@@ -556,7 +594,7 @@ const checkWinners = (() => {
                     final = 'AI Wins 👾'
                 }
                 displayResult()
-                gameBoard.resetBoard()
+                gameBoard2.resetBoard2()
             } else if (board[3] !== '' && board[3] === board[4] && board[4] === board[5]) {
                 if (board[3] === '❌') {
                     final = `${player.name} wins 🦄`
@@ -564,7 +602,7 @@ const checkWinners = (() => {
                     final = 'AI Wins 👾'
                 }
                 displayResult()
-                gameBoard.resetBoard()
+                gameBoard2.resetBoard2()
             } else if (board[6] !== '' && board[6] === board[7] && board[7] === board[8]) {
                 if (board[6] === '❌') {
                     final = `${player.name} wins 🦄`
@@ -572,20 +610,18 @@ const checkWinners = (() => {
                     final = 'AI Wins 👾'
                 }
                 displayResult()
-                gameBoard.resetBoard()
+                gameBoard2.resetBoard2()
             } else if (x.length === 5 &&  o.length === 4) {
                 final = 'It is a lousy draw. 😑'
                 displayResult()
-                gameBoard.resetBoard()
+                gameBoard2.resetBoard2()
             }
         } 
     }
         
-    if (!foo) {
-        setInterval(() => {
-            checkBoard()
-        }, 1000)
-    }
+    setInterval(() => {
+        checkBoard()
+    }, 1000)
 })()
 
 
@@ -601,14 +637,13 @@ const restartGame = (() => {
         mainThree.style.display = 'none'
         results.innerHTML = ''
         gameBoard.setBoard()
+        gameBoard2.setBoard2()
 
         for (let i = 0; i < boxes.length; i++) {
             while (boxes[i].firstChild) {
                 boxes[i].removeChild(boxes[i].firstChild);
             }
         }
-
-        foo = false
     }
 
     restart.addEventListener('click', goAgain)
@@ -616,5 +651,5 @@ const restartGame = (() => {
 
 
 setInterval(() => {
-    gameFlow()
-}, 100)
+    gameFlows()
+})
