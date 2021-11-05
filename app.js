@@ -72,7 +72,7 @@ const closeModal1 = (() => {
 })()
 
 
-// Module to end the game and go to home ⛪
+// Module to end the game and go to homepage ⛪
 const home = (() => {
     const homeBtn1 = document.getElementById('home1')
     const boxes = document.querySelectorAll('.gameBox')
@@ -238,7 +238,7 @@ const createPlayer = (() => {
 // & also fills the board array in the gameBoard module. ❌ 🔮 ⭕
 
 // (Player Vs Player)
-const gameFlows = (() => {
+const gameFlows = () => {
     const board = gameBoard.getBoard()
     const box = document.querySelectorAll('.gameBox')
     let x = true // Put this in the global scope if there is an error.
@@ -256,7 +256,6 @@ const gameFlows = (() => {
                     console.log('hi')
                     target.appendChild(el)
                     x = false
-                    return
                 } 
             }
         }
@@ -274,7 +273,6 @@ const gameFlows = (() => {
                     el.textContent = `${board[i]}`
                     target.appendChild(el)
                     x = true
-                    return
                 } 
             }
         }
@@ -287,8 +285,7 @@ const gameFlows = (() => {
             renderO(e)
         }
     })))
-})()
-
+}
 
 // this array will be used as a means to check if a number already exist here.
 // If a number in present in the array, then it means it's corresponding dom element has 
@@ -400,6 +397,7 @@ const gameFlow = () => {
     }
 
     const renderX = (e) => {
+        x = false
         for (let i = 0; i < board2.length; i++) {
             const target = e.target
             const data = target.getAttribute('data-index')
@@ -410,7 +408,6 @@ const gameFlow = () => {
                     gameBoard2.fillBoard2(i, 1, '❌')
                     el.textContent = `${board2[i]}`
                     target.appendChild(el)
-                    x = false
                     arr.push(i)
                     renderO()
                 } 
@@ -660,11 +657,14 @@ const restartGame = (() => {
     const results = document.querySelector('.results')
     const mainThree = document.getElementById('mainThree')
 
+    // dom element of mainOne and mainTwo
+    const one = document.getElementById('mainOne')
+    const two = document.getElementById('mainFour')
+
     function goAgain() {
         mainThree.style.display = 'none'
         results.innerHTML = ''
         gameBoard.setBoard()
-        gameBoard2.setBoard2()
 
         for (let i = 0; i < boxes.length; i++) {
             while (boxes[i].firstChild) {
@@ -676,7 +676,6 @@ const restartGame = (() => {
     function goAgain1() {
         mainThree.style.display = 'none'
         results.innerHTML = ''
-        gameBoard.setBoard()
         gameBoard2.setBoard2()
 
         for (let i = 0; i < boxes1.length; i++) {
@@ -687,11 +686,21 @@ const restartGame = (() => {
     }
 
     restart.addEventListener('click', (() => {
-        goAgain()
-        goAgain1()
+        if (one.style.display === 'grid') {
+            goAgain()
+        }
+
+        if (two.style.display === 'grid') {
+            goAgain1()
+        }
     }))
 })()
 
+
 setInterval(() => {
     gameFlow()
+}, 100)
+
+setInterval(() => {
+    gameFlows()
 }, 100)
