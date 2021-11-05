@@ -4,7 +4,9 @@ function Player(name) {
 }
 
 
-// Module & method to open the modal for p.v.p🌞
+// Module & method to open the modal for 🌞
+
+// (Player Vs Player)
 const openModal = (() => {
     const startGame = document.getElementById('start')
     const modal = document.getElementById('modal')
@@ -17,16 +19,18 @@ const openModal = (() => {
 })()
 
 
-// Module & method to close the modal p.v.p 🌚
+// Module & method to close the modal 🌚
+
+// (Player Vs Player)
 const closeModal = (() => {
     const playGame = document.getElementById('playGame')
     const modal = document.getElementById('modal')
-    const domBoard = document.querySelector('.gameBoard') // The dom element where Xs & Os will be rendered.
-    const mainTwo = document.getElementById('mainTwo') 
+    const mainOne = document.getElementById('mainOne')
+    const mainTwo = document.getElementById('mainTwo')
 
     const clearModal = () => {
         modal.style.display = 'none'
-        domBoard.style.display = 'grid'
+        mainOne.style.display = 'grid'
         mainTwo.style.display = 'none'
     }
 
@@ -35,6 +39,8 @@ const closeModal = (() => {
 
 
 // Module & method to open the modal for p.v.ai
+
+// (Player Vs AI)
 const openModal1 = (() => {
     const startGame = document.getElementById('ai')
     const modal = document.getElementById('modal1')
@@ -48,16 +54,18 @@ const openModal1 = (() => {
 
 
 // Module & method to close the modal for p.v.ai
+
+// (Player Vs AI)
 const closeModal1 = (() => {
     const modal = document.getElementById('modal1')
     const playGame = document.getElementById('playAI')
-    const domBoard = document.querySelector('.gameBoard') 
     const mainTwo = document.getElementById('mainTwo') 
+    const mainFour = document.getElementById('mainFour')
 
     const closeModals = () => {
         modal.style.display = 'none'
-        domBoard.style.display = 'grid'
         mainTwo.style.display = 'none'
+        mainFour.style.display = 'grid'
     }
 
     playGame.addEventListener('click', closeModals)
@@ -68,7 +76,10 @@ const closeModal1 = (() => {
 const home = (() => {
     const homeBtn1 = document.getElementById('home1')
     const boxes = document.querySelectorAll('.gameBox')
+    const boxes1 = document.querySelectorAll('.gameBox1')
     const results = document.querySelector('.results')
+    const mainOne = document.getElementById('mainOne')
+    const mainFour = document.getElementById('mainFour')
 
     function goAgain() {
         results.innerHTML = ''
@@ -76,32 +87,39 @@ const home = (() => {
         gameBoard.setBoard()
         gameBoard2.resetBoard2()
         gameBoard2.setBoard2()
+        mainOne.style.display = 'none'
+        mainFour.style.display = 'none'
 
         for (let i = 0; i < boxes.length; i++) {
             while (boxes[i].firstChild) {
                 boxes[i].removeChild(boxes[i].firstChild);
             }
         }
+
+        for (let i = 0; i < boxes1.length; i++) {
+            while (boxes1[i].firstChild) {
+                boxes1[i].removeChild(boxes1[i].firstChild);
+            }
+        }
     }
 
-    function gotoHome1() {
+    // This function takes the players from the gameboard pages to the Homepage. ⛪
+    function gotoHome() {
         const modal = document.getElementById('mainThree')
-        const domBoard = document.querySelector('.gameBoard') 
         const mainTwo = document.getElementById('mainTwo')
 
         mainTwo.style.display = 'grid'
         modal.style.display = 'none'
-        domBoard.style.display = 'none'
     }
 
-    homeBtn1.addEventListener('click', (() => {gotoHome1(), goAgain()}))
+    homeBtn1.addEventListener('click', (() => {gotoHome(), goAgain()}))
 })()
 
 
 // This module creates the board for the game 🎮 & also 
 // provides methods to fill the board & reset it 🔨.
 
-// Player vs Player
+// (Player vs Player)
 const gameBoard = (() => {
     let board = [
         '', '', '',
@@ -136,7 +154,7 @@ const gameBoard = (() => {
 // This module creates the board for the game 🎮 & also 
 // provides methods to fill the board & reset it 🔨.
 
-// Player vs AI
+// (Player vs AI)
 const gameBoard2 = (() => {
     let board2 = [
         '', '', '',
@@ -220,7 +238,7 @@ const createPlayer = (() => {
 // & also fills the board array in the gameBoard module. ❌ 🔮 ⭕
 
 // (Player Vs Player)
-const gameFlows = () => {
+const gameFlows = (() => {
     const board = gameBoard.getBoard()
     const box = document.querySelectorAll('.gameBox')
     let x = true // Put this in the global scope if there is an error.
@@ -235,8 +253,10 @@ const gameFlows = () => {
                 if (i === Number(data)) {
                     gameBoard.fillBoard(i, 1, '❌')
                     el.textContent = `${board[i]}`
+                    console.log('hi')
                     target.appendChild(el)
                     x = false
+                    return
                 } 
             }
         }
@@ -254,6 +274,7 @@ const gameFlows = () => {
                     el.textContent = `${board[i]}`
                     target.appendChild(el)
                     x = true
+                    return
                 } 
             }
         }
@@ -266,7 +287,7 @@ const gameFlows = () => {
             renderO(e)
         }
     })))
-}
+})()
 
 
 // this array will be used as a means to check if a number already exist here.
@@ -298,7 +319,7 @@ function generateRandom() {
 // (Player Vs AI)
 const gameFlow = () => {
     const board2 = gameBoard2.getBoard2()
-    const box = document.querySelectorAll('.gameBox')
+    const box = document.querySelectorAll('.gameBox1')
     const data = []
     box.forEach(el => data.push(el.getAttribute('data-index')))
 
@@ -307,62 +328,67 @@ const gameFlow = () => {
     const renderO = () => {
         x = true 
         let number = generateRandom()
-        let str = number.toString()
+        let str
+        if (number) {
+            str = number.toString()
+        } else {
+            return
+        }
         const ell = document.createElement('p')
 
         for (let i = 0; i < board2.length; i++) {
             gameBoard2.fillBoard2(number, 1, '⭕')
             if (board2[i] === '') {
                 if (str === data[0]) {
-                    target = document.querySelector('[data-index="0"]')
+                    target = document.getElementById('mainFour').querySelector('[data-index="0"]')
                     ell.classList.add('elstyle')
                     ell.textContent = '⭕'
                     target.appendChild(ell)
                 }
                 if (str === data[1]) {
-                    target = document.querySelector('[data-index="1"]')
+                    target = document.getElementById('mainFour').querySelector('[data-index="1"]')
                     ell.classList.add('elstyle')
                     ell.textContent = '⭕'
                     target.appendChild(ell)
                 }
                 if (str === data[2]) {
-                    target = document.querySelector('[data-index="2"]')
+                    target = document.getElementById('mainFour').querySelector('[data-index="2"]')
                     ell.classList.add('elstyle')
                     ell.textContent = '⭕'
                     target.appendChild(ell)
                 }
                 if (str === data[3]) {
-                    target = document.querySelector('[data-index="3"]')
+                    target = document.getElementById('mainFour').querySelector('[data-index="3"]')
                     ell.classList.add('elstyle')
                     ell.textContent = '⭕'
                     target.appendChild(ell)
                 }
                 if (str === data[4]) {
-                    target = document.querySelector('[data-index="4"]')
+                    target = document.getElementById('mainFour').querySelector('[data-index="4"]')
                     ell.classList.add('elstyle')
                     ell.textContent = '⭕'
                     target.appendChild(ell)
                 }
                 if (str === data[5]) {
-                    target = document.querySelector('[data-index="5"]')
+                    target = document.getElementById('mainFour').querySelector('[data-index="5"]')
                     ell.classList.add('elstyle')
                     ell.textContent = '⭕'
                     target.appendChild(ell)
                 }
                 if (str === data[6]) {
-                    target = document.querySelector('[data-index="6"]')
+                    target = document.getElementById('mainFour').querySelector('[data-index="6"]')
                     ell.classList.add('elstyle')
                     ell.textContent = '⭕'
                     target.appendChild(ell)
                 }
                 if (str === data[7]) {
-                    target = document.querySelector('[data-index="7"]')
+                    target = document.getElementById('mainFour').querySelector('[data-index="7"]')
                     ell.classList.add('elstyle')
                     ell.textContent = '⭕'
                     target.appendChild(ell)
                 }
                 if (str === data[8]) {
-                    target = document.querySelector('[data-index="8"]')
+                    target = document.getElementById('mainFour').querySelector('[data-index="8"]')
                     ell.classList.add('elstyle')
                     ell.textContent = '⭕'
                     target.appendChild(ell)
@@ -621,17 +647,18 @@ const checkWinners = (() => {
         
     setInterval(() => {
         checkBoard()
-    }, 1000)
+    })
 })()
 
 
 
 // This module will restart the game & clear the gameboard. 🧹
 const restartGame = (() => {
-    const mainThree = document.getElementById('mainThree')
     const restart = document.getElementById('restartBtn')
     const boxes = document.querySelectorAll('.gameBox')
+    const boxes1 = document.querySelectorAll('.gameBox1')
     const results = document.querySelector('.results')
+    const mainThree = document.getElementById('mainThree')
 
     function goAgain() {
         mainThree.style.display = 'none'
@@ -646,10 +673,25 @@ const restartGame = (() => {
         }
     }
 
-    restart.addEventListener('click', goAgain)
+    function goAgain1() {
+        mainThree.style.display = 'none'
+        results.innerHTML = ''
+        gameBoard.setBoard()
+        gameBoard2.setBoard2()
+
+        for (let i = 0; i < boxes1.length; i++) {
+            while (boxes1[i].firstChild) {
+                boxes1[i].removeChild(boxes1[i].firstChild);
+            }
+        }
+    }
+
+    restart.addEventListener('click', (() => {
+        goAgain()
+        goAgain1()
+    }))
 })()
 
-
 setInterval(() => {
-    gameFlows()
-})
+    gameFlow()
+}, 100)

@@ -35,7 +35,8 @@ header h1 {
   place-items: center;
   position: absolute;
   background: #000000a4;
-  height: 106%;
+  margin-top: 44rem;
+  height: 100vh;
   width: 100%;
   -ms-grid-column-align: center;
       justify-self: center;
@@ -135,13 +136,12 @@ header h1 {
 }
 
 .modal1 {
-  border: solid;
   z-index: 10;
   display: none;
   place-items: center;
-  position: absolute;
   background: #000000a4;
-  height: 106%;
+  margin-top: -14rem;
+  height: 100vh;
   width: 100%;
   -ms-grid-column-align: center;
       justify-self: center;
@@ -242,15 +242,15 @@ header h1 {
 
 #mainOne {
   height: 42rem;
-  display: -ms-grid;
-  display: grid;
+  display: none;
   place-items: center;
 }
 
 #mainOne .gameBoard {
   height: 80%;
   width: 30%;
-  display: none;
+  display: -ms-grid;
+  display: grid;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
   -ms-grid-rows: (1fr)[3];
@@ -301,6 +301,72 @@ header h1 {
 }
 
 #mainOne .gameBoard #nine {
+  border-right: none;
+  border-bottom: none;
+}
+
+#mainFour {
+  z-index: 100;
+  height: 43.5rem;
+  display: none;
+  place-items: center;
+}
+
+#mainFour .gameBoard {
+  height: 80%;
+  width: 30%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  -ms-grid-rows: (1fr)[3];
+      grid-template-rows: repeat(3, 1fr);
+}
+
+#mainFour .gameBoard .gameBox1 {
+  cursor: pointer;
+  border: solid;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+#mainFour .gameBoard .gameBox1 .elstyle {
+  font-size: 3.5rem;
+}
+
+#mainFour .gameBoard #one {
+  border-left: none;
+  border-top: none;
+}
+
+#mainFour .gameBoard #two {
+  border-top: none;
+}
+
+#mainFour .gameBoard #three {
+  border-top: none;
+  border-right: none;
+}
+
+#mainFour .gameBoard #four {
+  border-left: none;
+}
+
+#mainFour .gameBoard #six {
+  border-right: none;
+}
+
+#mainFour .gameBoard #seven {
+  border-left: none;
+  border-bottom: none;
+}
+
+#mainFour .gameBoard #eight {
+  border-bottom: none;
+}
+
+#mainFour .gameBoard #nine {
   border-right: none;
   border-bottom: none;
 }
@@ -394,7 +460,7 @@ header h1 {
 #mainThree {
   background: aliceblue;
   position: absolute;
-  z-index: 20;
+  z-index: 200;
   height: 103%;
   width: 100%;
   display: none;
