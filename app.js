@@ -253,7 +253,6 @@ const gameFlows = () => {
                 if (i === Number(data)) {
                     gameBoard.fillBoard(i, 1, '❌')
                     el.textContent = `${board[i]}`
-                    console.log('hi')
                     target.appendChild(el)
                     x = false
                 } 

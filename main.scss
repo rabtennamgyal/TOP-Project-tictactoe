@@ -34,7 +34,6 @@ header {
     place-items: center;
     position: absolute;
     background: #000000a4;
-    //height: 106%;
     margin-top: 44rem;
     height: 100vh;
     width: 100%;
@@ -67,25 +66,31 @@ header {
                 margin: 0 1.5rem;
                 height: 3rem;
                 width: 20rem;
-                border-radius: 2rem;
+                border-radius: 2px;
                 border: none;
                 outline: none;
                 font-size: 1.7rem;
             }
 
             .pBtn {
+                background: #000;
+                color: #fff;
                 cursor: pointer;
                 height: 3rem;
                 width: 7rem;
                 border: none;
-                border-radius: 2rem;
+                border-radius: 2px;
 
                 &:hover {
+                    background: #fff;
+                    color: #000;
                     transform: scale(1.1);
                     transition: 0.7s ease-in-out;
                 }
 
                 &:active {
+                    background: #fff;
+                    color: #000;
                     transform: scale(0.9s);
                     transition: 0.7s ease-in-out;
                 }
@@ -93,19 +98,25 @@ header {
         }
 
         #playGame {
+            background: #000;
+            color: #fff;
             cursor: pointer;
             height: 3rem;
             width: 10rem;
             border: none;
-            border-radius: 2rem;
+            border-radius: 2px;
             margin-top: 3rem;
 
             &:hover {
+                background: #fff;
+                color: #000;
                 transform: scale(1.1);
                 transition: 0.7s ease-in-out;
             }
 
             &:active {
+                background: #fff;
+                color: #000;
                 transform: scale(0.9s);
                 transition: 0.7s ease-in-out;
             }
@@ -151,25 +162,31 @@ header {
                 margin: 0 1.5rem;
                 height: 3rem;
                 width: 20rem;
-                border-radius: 2rem;
+                border-radius: 2px;
                 border: none;
                 outline: none;
                 font-size: 1.7rem;
             }
 
             .sumbitPlayer {
+                background: #000;
+                color: #fff;
                 cursor: pointer;
                 height: 3rem;
                 width: 7rem;
                 border: none;
-                border-radius: 2rem;
+                border-radius: 2px;
 
                 &:hover {
+                    background: #fff;
+                    color: #000;
                     transform: scale(1.1);
                     transition: 0.7s ease-in-out;
                 }
 
                 &:active {
+                    background: #fff;
+                    color: #000;
                     transform: scale(0.9s);
                     transition: 0.7s ease-in-out;
                 }
@@ -177,19 +194,25 @@ header {
         }
 
         #playAI {
+            background: #000;
+            color: #fff;
             cursor: pointer;
             height: 3rem;
             width: 10rem;
             border: none;
-            border-radius: 2rem;
+            border-radius: 2px;
             margin-top: 3rem;
 
             &:hover {
+                background: #fff;
+                color: #000;
                 transform: scale(1.1);
                 transition: 0.7s ease-in-out;
             }
 
             &:active {
+                background: #fff;
+                color: #000;
                 transform: scale(0.9s);
                 transition: 0.7s ease-in-out;
             }
