@@ -1,3 +1,5 @@
+// 😎
+
 // Factory 🏭 function to create players for the game.
 function Player(name) {
     return {name}
