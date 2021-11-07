@@ -45,6 +45,12 @@ header h1 {
       align-self: center;
 }
 
+@media screen and (max-width: 400px) {
+  .modal {
+    margin-top: 67rem;
+  }
+}
+
 .modal .modal-content {
   background: #2c2b2b;
   border: none;
@@ -66,6 +72,12 @@ header h1 {
           justify-content: center;
 }
 
+@media screen and (max-width: 400px) {
+  .modal .modal-content {
+    width: 90%;
+  }
+}
+
 .modal .modal-content .inputBox {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -73,10 +85,23 @@ header h1 {
   margin: 1rem;
 }
 
+@media screen and (max-width: 400px) {
+  .modal .modal-content .inputBox {
+    width: 100%;
+  }
+}
+
 .modal .modal-content .inputBox label {
   color: #fff;
   font-size: 2rem;
   font-family: cursive, sans-serif;
+}
+
+@media screen and (max-width: 400px) {
+  .modal .modal-content .inputBox label {
+    place-self: center;
+    font-size: 1rem;
+  }
 }
 
 .modal .modal-content .inputBox input {
@@ -88,6 +113,13 @@ header h1 {
   border: none;
   outline: none;
   font-size: 1.7rem;
+}
+
+@media screen and (max-width: 400px) {
+  .modal .modal-content .inputBox input {
+    width: 19rem;
+    margin: 0 1rem;
+  }
 }
 
 .modal .modal-content .inputBox .pBtn {
@@ -183,6 +215,12 @@ header h1 {
           justify-content: center;
 }
 
+@media screen and (max-width: 400px) {
+  .modal1 .modal-content {
+    width: 90%;
+  }
+}
+
 .modal1 .modal-content .inputBox {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -190,10 +228,24 @@ header h1 {
   margin: 1rem;
 }
 
+@media screen and (max-width: 400px) {
+  .modal1 .modal-content .inputBox {
+    width: 90%;
+  }
+}
+
 .modal1 .modal-content .inputBox label {
   color: #fff;
   font-size: 2rem;
   font-family: cursive, sans-serif;
+}
+
+@media screen and (max-width: 400px) {
+  .modal1 .modal-content .inputBox label {
+    font-size: 1rem;
+    width: 90%;
+    place-self: center;
+  }
 }
 
 .modal1 .modal-content .inputBox input {
@@ -205,6 +257,12 @@ header h1 {
   border: none;
   outline: none;
   font-size: 1.7rem;
+}
+
+@media screen and (max-width: 400px) {
+  .modal1 .modal-content .inputBox input {
+    margin: 0 1rem;
+  }
 }
 
 .modal1 .modal-content .inputBox .sumbitPlayer {
@@ -281,6 +339,12 @@ header h1 {
       grid-template-rows: repeat(3, 1fr);
 }
 
+@media screen and (max-width: 400px) {
+  #mainOne .gameBoard {
+    width: 90%;
+  }
+}
+
 #mainOne .gameBoard .gameBox {
   cursor: pointer;
   border: solid;
@@ -345,6 +409,12 @@ header h1 {
       grid-template-columns: repeat(3, 1fr);
   -ms-grid-rows: (1fr)[3];
       grid-template-rows: repeat(3, 1fr);
+}
+
+@media screen and (max-width: 400px) {
+  #mainFour .gameBoard {
+    width: 90%;
+  }
 }
 
 #mainFour .gameBoard .gameBox1 {
@@ -435,9 +505,38 @@ header h1 {
   place-items: center;
 }
 
-#mainTwo .placeholder .content h1 {
+@media screen and (max-width: 400px) {
+  #mainTwo .placeholder .content {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #mainTwo .placeholder .content .divOne {
+    width: 100%;
+  }
+}
+
+#mainTwo .placeholder .content .divOne h1 {
   font-size: 3rem;
   font-family: cursive, sans-serif;
+}
+
+@media screen and (max-width: 400px) {
+  #mainTwo .placeholder .content .divOne h1 {
+    font-size: 2.2rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #mainTwo .placeholder .content .divTwo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    width: 100%;
+  }
 }
 
 #mainTwo .placeholder .content .divTwo button {
@@ -451,6 +550,15 @@ header h1 {
   height: 5rem;
   width: 20rem;
   margin: 0 3rem;
+}
+
+@media screen and (max-width: 400px) {
+  #mainTwo .placeholder .content .divTwo button {
+    margin: 0 5px;
+    width: 12rem;
+    height: 4rem;
+    font-size: 1.3rem;
+  }
 }
 
 @media screen and (min-width: 400px) and (max-width: 900px) {
@@ -522,6 +630,12 @@ header h1 {
   justify-self: center;
 }
 
+@media screen and (max-width: 400px) {
+  #mainThree .result .btn {
+    width: 80%;
+  }
+}
+
 #mainThree .result .btn button {
   color: #fff;
   cursor: pointer;
@@ -556,5 +670,11 @@ header h1 {
 #mainThree .result .results .h1style {
   font-size: 7rem;
   font-family: cursive, sans-serif;
+}
+
+@media screen and (max-width: 400px) {
+  #mainThree .result .results .h1style {
+    font-size: 3rem;
+  }
 }
 /*# sourceMappingURL=main.css.map */

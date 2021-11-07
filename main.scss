@@ -40,6 +40,10 @@ header {
     justify-self: center;
     align-self: center;
 
+    @media screen and (max-width: $phone) {
+        margin-top: 67rem;
+    }
+
     .modal-content {
         background: #2c2b2b;
         border: none;
@@ -51,14 +55,27 @@ header {
         align-items: center;
         justify-content: center;
 
+        @media screen and (max-width: $phone) {
+            width: 90%;
+        }
+
         .inputBox {
             display: flex;
             margin: 1rem;
+
+            @media screen and (max-width: $phone) {
+                width: 100%;
+            }
             
             label {
                 color: #fff;
                 font-size: 2rem;
                 font-family: cursive, sans-serif;
+
+                @media screen and (max-width: $phone) {
+                    place-self: center;
+                    font-size: 1rem;
+                }
             }
 
             input {
@@ -70,6 +87,11 @@ header {
                 border: none;
                 outline: none;
                 font-size: 1.7rem;
+
+                @media screen and (max-width: $phone) {
+                    width: 19rem;
+                    margin: 0 1rem;
+                }
             }
 
             .pBtn {
@@ -145,16 +167,30 @@ header {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+            
+        @media screen and (max-width: $phone) {
+            width: 90%;
+        }
 
         
         .inputBox {
             display: flex;
             margin: 1rem;
+                
+            @media screen and (max-width: $phone) {
+                width: 90%;
+            }
             
             label {
                 color: #fff;
                 font-size: 2rem;
                 font-family: cursive, sans-serif;
+
+                @media screen and (max-width: $phone) {
+                    font-size: 1rem;
+                    width: 90%;
+                    place-self: center;
+                }
             }
 
             input {
@@ -166,6 +202,10 @@ header {
                 border: none;
                 outline: none;
                 font-size: 1.7rem;
+
+                @media screen and (max-width: $phone) {
+                    margin: 0 1rem;
+                }
             }
 
             .sumbitPlayer {
@@ -232,6 +272,10 @@ header {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(3, 1fr);
+            
+        @media screen and (max-width: $phone) {
+            width: 90%;
+        }
 
         .gameBox {
             cursor: pointer;
@@ -295,6 +339,10 @@ header {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(3, 1fr);
+
+        @media screen and (max-width: $phone) {
+            width: 90%;
+        }
 
         .gameBox1 {
             cursor: pointer;
@@ -375,12 +423,33 @@ header {
             display: grid;
             place-items: center;
 
-            h1 {
-                font-size: 3rem;
-                font-family: cursive, sans-serif;
+            @media screen and (max-width: $phone) {
+                width: 80%;
+            }
+
+            .divOne {
+                    
+                @media screen and (max-width: $phone) {
+                    width: 100%;
+                }
+
+                h1 {
+                    font-size: 3rem;
+                    font-family: cursive, sans-serif;
+
+                    @media screen and (max-width: $phone) {
+                        font-size: 2.2rem;
+                    }
+                }
             }
 
             .divTwo {
+
+                @media screen and (max-width: $phone) {
+                    display: flex;
+                    justify-content: space-around;
+                    width: 100%;
+                }
 
                 button {
                     cursor: pointer;
@@ -393,6 +462,14 @@ header {
                     height: 5rem;
                     width: 20rem;
                     margin: 0 3rem;
+
+                        
+                    @media screen and (max-width: $phone) {
+                        margin: 0 5px;
+                        width: 12rem;
+                        height: 4rem;
+                        font-size: 1.3rem;
+                    }
 
                     @media screen and (min-width: $phone) and (max-width: $tab) {
                         width: 12rem;
@@ -443,6 +520,10 @@ header {
             align-items: center;
             justify-self: center;
 
+            @media screen and (max-width: $phone) {
+                width: 80%;
+            }
+
             button {
                 color: #fff;
                 cursor: pointer;
@@ -473,6 +554,10 @@ header {
             .h1style {
                 font-size: 7rem;
                 font-family: cursive, sans-serif;
+
+                @media screen and (max-width: $phone) {
+                    font-size: 3rem;
+                }
             }
         }
     }
