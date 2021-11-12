@@ -579,6 +579,7 @@ const checkWinners = (() => {
                 }
                 displayResult()
                 gameBoard2.resetBoard2()
+                return
             } else if (board[0] !== '' && board[0] === board[3] && board[3] === board[6]) {
                 if (board[0] === '❌') {
                     final = `${player.name} wins 🦄`
@@ -587,6 +588,7 @@ const checkWinners = (() => {
                 }
                 displayResult()
                 gameBoard2.resetBoard2()
+                return
             } else if (board[0] !== '' && board[0] === board[4] && board[4] === board[8]) {
                 if (board[0] === '❌') {
                     final = `${player.name} wins 🦄`
@@ -595,6 +597,7 @@ const checkWinners = (() => {
                 }
                 displayResult()
                 gameBoard2.resetBoard2()
+                return
             } else if (board[1] !== '' && board[1] === board[4] && board[4] === board[7]) {
                 if (board[1] === '❌') {
                     final = `${player.name} wins 🦄`
@@ -603,6 +606,7 @@ const checkWinners = (() => {
                 }
                 displayResult()
                 gameBoard2.resetBoard2()
+                return
             } else if (board[2] !== '' && board[2] === board[5] && board[5] === board[8]) {
                 if (board[2] === '❌') {
                     final = `${player.name} wins 🦄`
@@ -611,6 +615,7 @@ const checkWinners = (() => {
                 }
                 displayResult()
                 gameBoard2.resetBoard2()
+                return
             } else if (board[2] !== '' && board[2] === board[4] && board[4] === board[6]) {
                 if (board[2] === '❌') {
                     final = `${player.name} wins 🦄`
@@ -619,6 +624,7 @@ const checkWinners = (() => {
                 }
                 displayResult()
                 gameBoard2.resetBoard2()
+                return
             } else if (board[3] !== '' && board[3] === board[4] && board[4] === board[5]) {
                 if (board[3] === '❌') {
                     final = `${player.name} wins 🦄`
@@ -627,6 +633,7 @@ const checkWinners = (() => {
                 }
                 displayResult()
                 gameBoard2.resetBoard2()
+                return
             } else if (board[6] !== '' && board[6] === board[7] && board[7] === board[8]) {
                 if (board[6] === '❌') {
                     final = `${player.name} wins 🦄`
@@ -635,10 +642,12 @@ const checkWinners = (() => {
                 }
                 displayResult()
                 gameBoard2.resetBoard2()
+                return
             } else if (x.length === 5 &&  o.length === 4) {
                 final = 'It is a lousy draw. 😑'
                 displayResult()
                 gameBoard2.resetBoard2()
+                return
             }
         } 
     }
