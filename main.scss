@@ -15,6 +15,7 @@ html, body {
     box-sizing: border-box;
     background: #f0f8ffd0;
     display: grid;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 header {
@@ -24,7 +25,7 @@ header {
 
     h1 {
         font-size: 3rem;
-        font-family: cursive, monospace;
+        font-family: 'Courier New', Courier, monospace;
     }
 }
 
@@ -70,7 +71,6 @@ header {
             label {
                 color: #fff;
                 font-size: 2rem;
-                font-family: cursive, sans-serif;
 
                 @media screen and (max-width: $phone) {
                     place-self: center;
@@ -79,7 +79,6 @@ header {
             }
 
             input {
-                font-family: cursive, sans-serif;
                 margin: 0 1.5rem;
                 height: 3rem;
                 width: 20rem;
@@ -184,7 +183,6 @@ header {
             label {
                 color: #fff;
                 font-size: 2rem;
-                font-family: cursive, sans-serif;
 
                 @media screen and (max-width: $phone) {
                     font-size: 1rem;
@@ -194,7 +192,6 @@ header {
             }
 
             input {
-                font-family: cursive, sans-serif;
                 margin: 0 1.5rem;
                 height: 3rem;
                 width: 20rem;
@@ -435,7 +432,6 @@ header {
 
                 h1 {
                     font-size: 3rem;
-                    font-family: cursive, sans-serif;
 
                     @media screen and (max-width: $phone) {
                         font-size: 2.2rem;
@@ -456,7 +452,6 @@ header {
                     border: none;
                     border-radius: 1px;
                     font-size: 2rem;
-                    font-family: cursive, sans-serif;
                     background: #000;
                     color: #fff;
                     height: 5rem;
@@ -527,10 +522,8 @@ header {
             button {
                 color: #fff;
                 cursor: pointer;
-                font-family: cursive, sans-serif;
                 height: 4rem;
                 width: 10rem;
-                //margin: 1rem;
                 border: none;
                 border-radius: 2rem;
                 background: #000;
@@ -553,7 +546,6 @@ header {
 
             .h1style {
                 font-size: 7rem;
-                font-family: cursive, sans-serif;
 
                 @media screen and (max-width: $phone) {
                     font-size: 3rem;

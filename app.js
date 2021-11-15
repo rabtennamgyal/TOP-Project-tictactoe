@@ -328,14 +328,11 @@ const gameFlow = () => {
         x = true 
         let number = generateRandom()
         let str
-        if (number) {
-            str = number.toString()
-        } else {
-            return
-        }
+        str = number.toString()
         const ell = document.createElement('p')
 
         for (let i = 0; i < board2.length; i++) {
+            console.log('Here')
             gameBoard2.fillBoard2(number, 1, '⭕')
             if (board2[i] === '') {
                 if (str === data[0]) {
@@ -396,14 +393,10 @@ const gameFlow = () => {
         }
 
         arr.push(number)
-        console.log(arr)
-        console.log(gameBoard2.getBoard2())
     }
 
     const renderX = (e) => {
         x = false
-        console.log(arr)
-        console.log(gameBoard2.getBoard2())
         for (let i = 0; i < board2.length; i++) {
             const target = e.target
             const data = target.getAttribute('data-index')
@@ -415,6 +408,7 @@ const gameFlow = () => {
                     el.textContent = `${board2[i]}`
                     target.appendChild(el)
                     arr.push(i)
+
                     setTimeout(() => {
                         renderO()
                     }, 1000)
@@ -473,7 +467,9 @@ const checkWinner = (() => {
                 } else {
                     final = `${b.name} wins`
                 }
-                displayResult()
+                setTimeout(() => {
+                    displayResult()
+                }, 1000)
                 gameBoard.resetBoard()
             } else if (board[0] !== '' && board[0] === board[3] && board[3] === board[6]) {
                 if (board[0] === '❌') {
@@ -481,7 +477,9 @@ const checkWinner = (() => {
                 } else {
                     final = `${b.name} wins`
                 }
-                displayResult()
+                setTimeout(() => {
+                    displayResult()
+                }, 1000)
                 gameBoard.resetBoard()
             } else if (board[0] !== '' && board[0] === board[4] && board[4] === board[8]) {
                 if (board[0] === '❌') {
@@ -489,7 +487,9 @@ const checkWinner = (() => {
                 } else {
                     final = `${b.name} wins`
                 }
-                displayResult()
+                setTimeout(() => {
+                    displayResult()
+                }, 1000)
                 gameBoard.resetBoard()
             } else if (board[1] !== '' && board[1] === board[4] && board[4] === board[7]) {
                 if (board[1] === '❌') {
@@ -497,7 +497,9 @@ const checkWinner = (() => {
                 } else {
                     final = `${b.name} wins`
                 }
-                displayResult()
+                setTimeout(() => {
+                    displayResult()
+                }, 1000)
                 gameBoard.resetBoard()
             } else if (board[2] !== '' && board[2] === board[5] && board[5] === board[8]) {
                 if (board[2] === '❌') {
@@ -505,7 +507,9 @@ const checkWinner = (() => {
                 } else {
                     final = `${b.name} wins`
                 }
-                displayResult()
+                setTimeout(() => {
+                    displayResult()
+                }, 1000)
                 gameBoard.resetBoard()
             } else if (board[2] !== '' && board[2] === board[4] && board[4] === board[6]) {
                 if (board[2] === '❌') {
@@ -513,7 +517,9 @@ const checkWinner = (() => {
                 } else {
                     final = `${b.name} wins`
                 }
-                displayResult()
+                setTimeout(() => {
+                    displayResult()
+                }, 1000)
                 gameBoard.resetBoard()
             } else if (board[3] !== '' && board[3] === board[4] && board[4] === board[5]) {
                 if (board[3] === '❌') {
@@ -521,7 +527,9 @@ const checkWinner = (() => {
                 } else {
                     final = `${b.name} wins`
                 }
-                displayResult()
+                setTimeout(() => {
+                    displayResult()
+                }, 1000)
                 gameBoard.resetBoard()
             } else if (board[6] !== '' && board[6] === board[7] && board[7] === board[8]) {
                 if (board[6] === '❌') {
@@ -529,11 +537,15 @@ const checkWinner = (() => {
                 } else {
                     final = `${b.name} wins`
                 }
-                displayResult()
+                setTimeout(() => {
+                    displayResult()
+                }, 1000)
                 gameBoard.resetBoard()
             } else if (x.length === 5 &&  o.length === 4) {
                 final = 'It is a lousy draw.'
-                displayResult()
+                setTimeout(() => {
+                    displayResult()
+                }, 1000)
                 gameBoard.resetBoard()
             }
         } 
