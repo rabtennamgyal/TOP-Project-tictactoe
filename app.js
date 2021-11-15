@@ -91,6 +91,7 @@ const home = (() => {
         gameBoard2.setBoard2()
         mainOne.style.display = 'none'
         mainFour.style.display = 'none'
+        arr = []
 
         for (let i = 0; i < boxes.length; i++) {
             while (boxes[i].firstChild) {
@@ -395,10 +396,14 @@ const gameFlow = () => {
         }
 
         arr.push(number)
+        console.log(arr)
+        console.log(gameBoard2.getBoard2())
     }
 
     const renderX = (e) => {
         x = false
+        console.log(arr)
+        console.log(gameBoard2.getBoard2())
         for (let i = 0; i < board2.length; i++) {
             const target = e.target
             const data = target.getAttribute('data-index')
@@ -410,7 +415,9 @@ const gameFlow = () => {
                     el.textContent = `${board2[i]}`
                     target.appendChild(el)
                     arr.push(i)
-                    renderO()
+                    setTimeout(() => {
+                        renderO()
+                    }, 1000)
                 } 
             }
         }
@@ -559,7 +566,6 @@ const checkWinners = (() => {
         el.textContent = final
         resultDisplay.appendChild(el)
         results.style.display = 'flex'
-        arr = []
     }
         
     const checkBoard = () => {
@@ -577,77 +583,86 @@ const checkWinners = (() => {
                 } else {
                     final = 'AI Wins 👾'
                 }
-                displayResult()
+                setTimeout(() => {
+                    displayResult()
+                }, 1000)
                 gameBoard2.resetBoard2()
-                return
             } else if (board[0] !== '' && board[0] === board[3] && board[3] === board[6]) {
                 if (board[0] === '❌') {
                     final = `${player.name} wins 🦄`
                 } else {
                     final = 'AI Wins 👾'
                 }
-                displayResult()
+                setTimeout(() => {
+                    displayResult()
+                }, 1000)
                 gameBoard2.resetBoard2()
-                return
             } else if (board[0] !== '' && board[0] === board[4] && board[4] === board[8]) {
                 if (board[0] === '❌') {
                     final = `${player.name} wins 🦄`
                 } else {
                     final = 'AI Wins 👾'
                 }
-                displayResult()
+                setTimeout(() => {
+                    displayResult()
+                }, 1000)
                 gameBoard2.resetBoard2()
-                return
             } else if (board[1] !== '' && board[1] === board[4] && board[4] === board[7]) {
                 if (board[1] === '❌') {
                     final = `${player.name} wins 🦄`
                 } else {
                     final = 'AI Wins 👾'
                 }
-                displayResult()
+                setTimeout(() => {
+                    displayResult()
+                }, 1000)
                 gameBoard2.resetBoard2()
-                return
             } else if (board[2] !== '' && board[2] === board[5] && board[5] === board[8]) {
                 if (board[2] === '❌') {
                     final = `${player.name} wins 🦄`
                 } else {
                     final = 'AI Wins 👾'
                 }
-                displayResult()
+                setTimeout(() => {
+                    displayResult()
+                }, 1000)
                 gameBoard2.resetBoard2()
-                return
             } else if (board[2] !== '' && board[2] === board[4] && board[4] === board[6]) {
                 if (board[2] === '❌') {
                     final = `${player.name} wins 🦄`
                 } else {
                     final = 'AI Wins 👾'
                 }
-                displayResult()
+                setTimeout(() => {
+                    displayResult()
+                }, 1000)
                 gameBoard2.resetBoard2()
-                return
             } else if (board[3] !== '' && board[3] === board[4] && board[4] === board[5]) {
                 if (board[3] === '❌') {
                     final = `${player.name} wins 🦄`
                 } else {
                     final = 'AI Wins 👾'
                 }
-                displayResult()
+                setTimeout(() => {
+                    displayResult()
+                }, 1000)
                 gameBoard2.resetBoard2()
-                return
             } else if (board[6] !== '' && board[6] === board[7] && board[7] === board[8]) {
                 if (board[6] === '❌') {
                     final = `${player.name} wins 🦄`
                 } else {
                     final = 'AI Wins 👾'
                 }
-                displayResult()
+                setTimeout(() => {
+                    displayResult()
+                }, 1000)
                 gameBoard2.resetBoard2()
-                return
             } else if (x.length === 5 &&  o.length === 4) {
                 final = 'It is a lousy draw. 😑'
-                displayResult()
+                setTimeout(() => {
+                    displayResult()
+                }, 1000)
                 gameBoard2.resetBoard2()
-                return
             }
         } 
     }
@@ -687,12 +702,16 @@ const restartGame = (() => {
         mainThree.style.display = 'none'
         results.innerHTML = ''
         gameBoard2.setBoard2()
+        arr = []
 
         for (let i = 0; i < boxes1.length; i++) {
             while (boxes1[i].firstChild) {
                 boxes1[i].removeChild(boxes1[i].firstChild);
             }
         }
+
+        console.log(arr)
+        console.log(gameBoard2.getBoard2())
     }
 
     restart.addEventListener('click', (() => {
@@ -707,10 +726,13 @@ const restartGame = (() => {
 })()
 
 
+// Player Vs AI
 setInterval(() => {
     gameFlow()
 }, 100)
 
+// Player Vs Player
 setInterval(() => {
     gameFlows()
 }, 100)
+
