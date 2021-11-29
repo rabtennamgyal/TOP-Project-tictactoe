@@ -307,7 +307,7 @@ function generateRandom() {
     }
 
     let random = newArr[Math.floor(Math.random() * newArr.length)]
-
+    
     return random
 }
 
@@ -332,7 +332,6 @@ const gameFlow = () => {
         const ell = document.createElement('p')
 
         for (let i = 0; i < board2.length; i++) {
-            console.log('Here')
             gameBoard2.fillBoard2(number, 1, '⭕')
             if (board2[i] === '') {
                 if (str === data[0]) {
@@ -721,9 +720,6 @@ const restartGame = (() => {
                 boxes1[i].removeChild(boxes1[i].firstChild);
             }
         }
-
-        console.log(arr)
-        console.log(gameBoard2.getBoard2())
     }
 
     restart.addEventListener('click', (() => {
